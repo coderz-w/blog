@@ -44,7 +44,8 @@
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
-      "pnpm lint"
+      "pnpm lint",
+      "pnpm format"
     ]
   },
   "engines": {
