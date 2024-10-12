@@ -7,10 +7,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint \"src/**/*.{js,ts,jsx,tsx}\" --fix",
+    "lint:ci": "eslint \"src/**/*.{js,ts,jsx,tsx}\"",
+    "format": "prettier --write .",
+    "format:ci": "prettier --list-different \"**/*.{ts,tsx,js,jsx}\"",
     "prepare": "husky"
   },
   "dependencies": {
+    "@types/prettier": "^3.0.0",
     "next": "14.2.15",
+    "prettier": "3.3.2",
     "react": "^18",
     "react-dom": "^18"
   },
