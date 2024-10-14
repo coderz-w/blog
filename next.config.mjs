@@ -3,8 +3,11 @@ import NextBundleAnalyzer from '@next/bundle-analyzer'
 
 let nextConfig = {};
 
-nextConfig = NextBundleAnalyzer({
+if(process.env.ANALYZE === 'true'){
+  nextConfig = NextBundleAnalyzer({
     enabled: true,
   })(nextConfig)
+}
+
 
 export default nextConfig;

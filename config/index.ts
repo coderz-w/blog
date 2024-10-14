@@ -1,0 +1,1 @@
+export { seo } from './seo';

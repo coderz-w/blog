@@ -3,15 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "analyze": "set ANALYZE=true && set BUNDLE_ANALYZE=browser && npm run build",
-    "dev": "next dev",
+    "dev": "set ANALYZE=false && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint \"src/**/*.{js,ts,jsx,tsx}\" --fix",
     "lint:ci": "eslint \"src/**/*.{js,ts,jsx,tsx}\"",
     "format": "prettier --write .",
     "format:ci": "prettier --list-different \"**/*.{ts,tsx,js,jsx}\"",
-    "prepare": "husky"
+    "prepare": "husky",
+    "analyze": "set ANALYZE=true && set BUNDLE_ANALYZE=browser && npm run build"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^14.2.15",
@@ -57,7 +57,7 @@
   "nextBundleAnalysis": {
     "budget": 358400,
     "budgetPercentIncreaseRed": 20,
-    "minimumChangeThreshold": 0,
+    "minimumChangeThreshold":102400,
     "showDetails": true
   }
 }
