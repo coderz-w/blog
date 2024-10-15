@@ -2,19 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-
+html {
+  font-size: 14px;
+  line-height: 1.5;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+html body {
+  @apply max-w-screen overflow-x-hidden;
+}
 
+
+*:focus {
+  outline: none;
+}
+
+*:not(input):not(textarea):not([contenteditable='true']):focus-visible {
+  outline: 0 !important;
+  box-shadow: theme(colors.accent) 0px 0px 0px 1px;
+}
+
+* {
+  tab-size: 2;
+
+  &:hover {
+    scrollbar-color: auto;
   }
 }
 
-body {
-
+.animate-ping {
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-@layer utilities {
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+a {
+  @apply break-all;
+}
+
+@screen lg {
+  input,
+  textarea {
+    font-size: 1rem;
+  }
 }
