@@ -3,6 +3,8 @@ import '../styles/index.css';
 import type { PropsWithChildren } from 'react';
 import { Metadata, Viewport } from 'next';
 
+import WebAppProviders from '@/components/providers/root';
+import AccentColorStyleInjector from '@/components/modules/shared/AccentColorStyleInjector';
 import { seo } from '~/seo';
 
 export const metadata: Metadata = {
@@ -53,9 +55,40 @@ export const viewport: Viewport = {
 
 export default async function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="zh-CN" suppressHydrationWarning>
-      <head></head>
-      <body>{children}</body>
+    <html lang="zh-CN" className=" noise" suppressHydrationWarning>
+      <head>
+        <SayHi />
+        <AccentColorStyleInjector />
+      </head>
+      <body>
+        <WebAppProviders>
+          <div data-theme>{children}</div>
+        </WebAppProviders>
+      </body>
     </html>
   );
+}
+
+const SayHi = () => {
+  return (
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `
+    (${function () {
+      console.log(
+        '%c Welcome my blog %c https://github.com/coderz-w/blog',
+        'color: #fff; margin: 1em 0; padding: 5px 0; background: #2980b9;',
+        'margin: 1em 0; padding: 5px 0; background: #efefef;',
+      );
+      console.log('%c', 'color: #000; margin: 1em 0; padding: 5px 0; background: #efefef;');
+    }.toString()})();`,
+      }}
+    />
+  );
+};
+
+declare global {
+  interface Window {
+    version: string;
+  }
 }

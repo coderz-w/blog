@@ -171,6 +171,7 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: ['class', '[data-theme="dark"]'],
   theme: {
     extend: {
       fontFamily: {
@@ -214,7 +215,6 @@ const config: Config = {
           // 浅葱
           primary: '#33A6B8',
           secondary: '#A8D8B9',
-          accent: '#33A6B8',
           'accent-content': '#fafafa',
 
           neutral: UIKitColors.grey3.light,
@@ -239,7 +239,6 @@ const config: Config = {
           primary: '#F596AA',
           // 洗朱
           secondary: '#FB966E',
-          accent: '#F596AA',
 
           neutral: UIKitColors.grey3.dark,
 
