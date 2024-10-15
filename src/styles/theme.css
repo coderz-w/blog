@@ -9,7 +9,6 @@ html.noise body::before {
   opacity: 0.01;
 } */
 
-
 .code-wrap {
   white-space: break-spaces !important;
   overflow: auto !important;

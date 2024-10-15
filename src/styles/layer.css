@@ -13,12 +13,10 @@
     height: 0 !important;
   }
 
-  .link--underline, a {
+  .link--underline,
+  a {
     color: currentColor;
-    background-image: linear-gradient(
-      var(--accent-color),
-      var(--accent-color)
-    );
+    background-image: linear-gradient(var(--accent-color), var(--accent-color));
     background-size: 0% 1.5px;
     background-repeat: no-repeat;
     transition: all 500ms ease;
@@ -53,10 +51,12 @@
   }
 
   @keyframes blink {
-    0%, 40% {
+    0%,
+    40% {
       opacity: 0;
     }
-    40.1%, 99.9% {
+    40.1%,
+    99.9% {
       opacity: 1;
     }
     100% {
@@ -117,11 +117,13 @@
     15% {
       fill: transparent;
     }
-    35%, 75% {
+    35%,
+    75% {
       stroke-dashoffset: 0;
       fill: theme('colors.base-content');
     }
-    90%, 100% {
+    90%,
+    100% {
       stroke-dashoffset: 2400;
       fill: transparent;
     }
@@ -132,7 +134,8 @@
   }
 
   @keyframes wave {
-    0%, 100% {
+    0%,
+    100% {
       transform: rotate(0deg);
     }
     50% {
@@ -188,8 +191,8 @@
     --base: hsl(var(--tint, 214) 80% 27% / calc(var(--alpha, 4) * 1%));
     --shade: hsl(from var(--base) calc(h + 8) 25 calc(l - 5));
     --perfect-shadow: 0 0 0 1px var(--base), 0 1px 1px -0.5px var(--shade),
-      0 3px 3px -1.5px var(--shade), 0 6px 6px -3px var(--shade),
-      0 12px 12px -6px var(--base), 0 24px 24px -12px var(--base);
+      0 3px 3px -1.5px var(--shade), 0 6px 6px -3px var(--shade), 0 12px 12px -6px var(--base),
+      0 24px 24px -12px var(--base);
     box-shadow: var(--perfect-shadow);
   }
 
