@@ -33,27 +33,45 @@ details summary {
   background-color: var(--accent-color);
 }
 
+/* 视图过渡组 */
+::view-transition-group(root) {
+  animation-duration: 1.2s;
+  animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* 新视图的过渡效果 */
 ::view-transition-new(root) {
-  animation: turnOff 800ms ease-in-out;
-}
-::view-transition-old(root) {
-  animation: none;
+  animation-name: reveal-light;
 }
 
-@keyframes turnOn {
-  0% {
-    clip-path: polygon(0% 0%, 100% 0, 100% 0, 0 0);
+/* 旧视图的过渡效果 */
+::view-transition-old(root),
+.dark::view-transition-old(root) {
+  animation: none;
+  z-index: -1;
+}
+
+/* 暗模式下的新视图过渡效果 */
+.dark::view-transition-new(root) {
+  animation-name: reveal-dark;
+}
+
+@keyframes reveal-light {
+  from {
+    clip-path: polygon(50% -71%, -50% 71%, -50% 71%, 50% -71%);
   }
-  100% {
-    clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 100%);
+  to {
+    clip-path: polygon(50% -71%, -50% 71%, 50% 171%, 171% 50%);
   }
 }
 
-[data-theme='dark']::view-transition-new(root) {
-  animation: turnOn 800ms ease-in-out;
-}
-::view-transition-old(root) {
-  animation: none;
+@keyframes reveal-dark {
+  from {
+    clip-path: polygon(171% 50%, 50% 171%, 50% 171%, 171% 50%);
+  }
+  to {
+    clip-path: polygon(171% 50%, 50% 171%, -50% 71%, 50% -71%);
+  }
 }
 
 @keyframes turnOff {

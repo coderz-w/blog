@@ -1,5 +1,5 @@
 'use client';
 
 export default function Home() {
-  return <div>哈哈qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq哈</div>;
+  return <div className="">哈哈qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq哈</div>;
 }

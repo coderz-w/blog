@@ -5,6 +5,7 @@ import { Metadata, Viewport } from 'next';
 
 import WebAppProviders from '@/components/providers/root';
 import AccentColorStyleInjector from '@/components/modules/shared/AccentColorStyleInjector';
+import Root from '@/components/layout/Root';
 import { seo } from '~/seo';
 
 export const metadata: Metadata = {
@@ -62,7 +63,9 @@ export default async function RootLayout({ children }: PropsWithChildren) {
       </head>
       <body>
         <WebAppProviders>
-          <div data-theme>{children}</div>
+          <div data-theme>
+            <Root>{children}</Root>
+          </div>
         </WebAppProviders>
       </body>
     </html>
@@ -86,9 +89,3 @@ const SayHi = () => {
     />
   );
 };
-
-declare global {
-  interface Window {
-    version: string;
-  }
-}
