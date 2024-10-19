@@ -50,9 +50,6 @@ importers:
       daisyui:
         specifier: ^4.12.13
         version: 4.12.13(postcss@8.4.47)
-      floating-ui:
-        specifier: ^5.2.8
-        version: 5.2.8
       framer-motion:
         specifier: 11.11.1
         version: 11.11.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1163,9 +1160,6 @@ packages:
 
   flatted@3.3.1:
     resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
-
-  floating-ui@5.2.8:
-    resolution: {integrity: sha512-OwEdc3AGgSG/UHDztMDt7Pt6dIMT2nN6J346vpoNPFaV+NWO50G1LH+GO+0hZSm4NFO+jyDx7x6APWeTg+tCng==}
 
   for-each@0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
@@ -3645,8 +3639,6 @@ snapshots:
       rimraf: 3.0.2
 
   flatted@3.3.1: {}
-
-  floating-ui@5.2.8: {}
 
   for-each@0.3.3:
     dependencies:
