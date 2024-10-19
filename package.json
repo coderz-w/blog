@@ -72,11 +72,6 @@
       "pnpm format"
     ]
   },
-  "engines": {
-    "node": ">=18",
-    "pnpm": "=9.4.0"
-  },
-  "packageManager": "pnpm@9.4.0",
   "nextBundleAnalysis": {
     "budget": 358400,
     "budgetPercentIncreaseRed": 20,
