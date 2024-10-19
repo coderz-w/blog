@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 import NextBundleAnalyzer from '@next/bundle-analyzer';
 
-let nextConfig = {};
+let nextConfig = {
+  images: {
+    domains: ['innei.in'],
+  },
+};
 
 if (process.env.ANALYZE === 'true') {
   nextConfig = NextBundleAnalyzer({
