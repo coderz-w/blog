@@ -7,11 +7,13 @@ import Image from 'next/image';
 import { TextUpTransitionView } from '@/components/ui/transition/TextUpTransitionView';
 import { SocialIcon } from '@/components/modules/home/SocialIcon';
 import { cn } from '@/lib/helper';
+import { FocusCards } from '@/components/ui/focus-cards.tsx';
 
 export default function Home() {
   return (
     <div>
       <Hero />
+      <BlogCardList />
     </div>
   );
 }
@@ -36,7 +38,7 @@ const TwoColumnLayout = ({
         'relative mx-auto block size-full min-w-0 max-w-[1800px] flex-col flex-wrap items-center lg:flex lg:flex-row',
         className,
       )}
-      style={{ padding: '0 20px' }} // 增加内边距
+      style={{ padding: '0 20px' }}
     >
       {children.slice(0, 2).map((child, i) => (
         <div
@@ -58,11 +60,19 @@ const TwoColumnLayout = ({
 const Hero = () => {
   const title = {
     template: [
-      { type: 'h1', text: `Hi, I'm zw👋`, class: ' font-light text-4xl font-900' },
+      { type: 'h1', text: `Hi, I'm `, class: ' font-light text-4xl font-900 inline-block' },
+      { type: 'h1', text: `zw`, class: ' font-light text-4xl font-bold inline-block' },
+      {
+        type: 'h1',
+        text: `👋`,
+        class:
+          ' font-light text-4xl font-bold inline-block hover:scale-[1.05] cursor-pointer origin-center transition-all',
+      },
+      { type: 'h1', text: ` `, class: ' h-0 w-0 scale-0' },
       {
         type: 'span',
         text: 'A NodeJS Full Stack ',
-        class: 'font-light text-4xl font-900 inline-block mt-[20px]',
+        class: 'font-light text-4xl font-900 inline-block mt-[5px]',
       },
       {
         type: 'code',
@@ -133,8 +143,8 @@ const Hero = () => {
             <span className=" opacity-70"> {description}</span>
           </motion.div>
 
-          <ul className="center mx-[60px] mt-8 flex flex-wrap gap-6 lg:mx-auto lg:mt-14 lg:justify-start lg:gap-4 lg:ml-24">
-            {Object.entries(socialIds).map(([type, id]) => (
+          <ul className="center mx-[60px] mt-8 flex flex-wrap gap-6 lg:mx-auto lg:mt-24 lg:justify-start lg:gap-4 lg:ml-24">
+            {Object.entries(socialIds).map(([type, id], index) => (
               <motion.li
                 key={type}
                 initial={{ y: 50, opacity: 0 }}
@@ -143,7 +153,7 @@ const Hero = () => {
                   type: 'spring',
                   damping: 10,
                   stiffness: 100,
-                  delay: titleAnimateD / 1000,
+                  delay: titleAnimateD / 1000 + index * 0.08,
                 }}
                 className="inline-block"
               >
@@ -202,5 +212,43 @@ const Quote = () => {
         <i className="i-mingcute-right-line rotate-90 text-2xl" />
       </span>
     </motion.div>
+  );
+};
+
+const BlogCardList = () => {
+  const cards = [
+    {
+      title: 'Forest Adventure',
+      src: 'https://images.unsplash.com/photo-1518710843675-2540dd79065c?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    },
+    {
+      title: 'Valley of life',
+      src: 'https://images.unsplash.com/photo-1600271772470-bd22a42787b3?q=80&w=3072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    },
+    {
+      title: 'Sala behta hi jayega',
+      src: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=3070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    },
+    {
+      title: 'Camping is for pros',
+      src: 'https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    },
+    {
+      title: 'The road not taken',
+      src: 'https://images.unsplash.com/photo-1507041957456-9c397ce39c97?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    },
+    {
+      title: 'The First Rule',
+      src: 'https://assets.aceternity.com/the-first-rule.png',
+    },
+  ];
+
+  return (
+    <div className=" w-screen mt-10 md:mt-16 flex flex-col gap-y-8 px-8">
+      <span className="text-2xl font-medium leading-loose ml-4 font-mono hidden md:block">
+        最近文章
+      </span>
+      <FocusCards cards={cards} />
+    </div>
   );
 };

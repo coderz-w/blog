@@ -3,7 +3,7 @@ import NextBundleAnalyzer from '@next/bundle-analyzer';
 
 let nextConfig = {
   images: {
-    domains: ['innei.in'],
+    domains: ['innei.in','images.unsplash.com','assets.aceternity.com'],
   },
 };
 
