@@ -2,6 +2,7 @@
 import './plugins/tw-css-plugin';
 
 import daisyui from 'daisyui';
+import typography from '@tailwindcss/typography';
 import type { Config } from 'tailwindcss';
 import { withTV } from 'tailwind-variants/transformer';
 import { getIconCollections, iconsPlugin } from '@egoist/tailwindcss-icons';
@@ -265,6 +266,7 @@ const config: Config = {
       },
     }),
     daisyui,
+    typography,
     require('./src/styles/theme.css'),
     require('./src/styles/layer.css'),
     require('./src/styles/animation.css'),

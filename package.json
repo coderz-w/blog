@@ -21,6 +21,7 @@
     "@iconify-json/material-symbols": "^1.2.4",
     "@iconify-json/mingcute": "^1.2.1",
     "@next/bundle-analyzer": "^14.2.15",
+    "@tailwindcss/typography": "^0.5.15",
     "@types/chroma-js": "^2.4.4",
     "@types/pngjs": "^6.0.5",
     "@types/prettier": "^3.0.0",
