@@ -25,7 +25,13 @@ export const Card = React.memo(
         hovered !== null && hovered !== index && 'blur-sm scale-[0.98]',
       )}
     >
-      <Image src={card.src} alt={card.title} fill className="object-cover absolute inset-0" />
+      <Image
+        src={card.src}
+        alt={card.title}
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        className="object-cover absolute inset-0"
+      />
       <div
         className={cn(
           'absolute inset-0 bg-black/50 flex flex-col justify-end py-8 px-4 transition-opacity duration-300', // 修改为 flex-col
@@ -63,7 +69,7 @@ export function FocusCards({ cards }: { cards: Card[] }) {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-[7xl] mx-auto md:px-8 w-full">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 max-w-[7xl] mx-auto md:px-8 w-full">
       {cards.map((card, index) => (
         <Card
           key={card.title}

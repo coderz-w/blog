@@ -6,7 +6,7 @@ import { Metadata, Viewport } from 'next';
 import WebAppProviders from '@/components/providers/root';
 import AccentColorStyleInjector from '@/components/modules/shared/AccentColorStyleInjector';
 import Root from '@/components/layout/Root';
-import { seo } from '~/seo';
+import { seo } from '~/index';
 
 export const metadata: Metadata = {
   metadataBase: seo.url,

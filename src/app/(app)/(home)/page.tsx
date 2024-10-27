@@ -245,7 +245,7 @@ const BlogCardList = () => {
   ];
 
   return (
-    <div className=" w-full mt-10 md:mt-16 flex flex-col gap-y-8 px-8">
+    <div className=" w-full mt-10 md:mt-16 flex flex-col gap-y-8 px-4">
       <span className="text-2xl font-medium leading-loose md:ml-4 font-mono hidden gap-x-2 items-center  md:flex">
         最近文章
         <span className=" i-material-symbols-kid-star-outline cursor-pointer hover:rotate-[720deg] animate-ease-out duration-150" />
@@ -257,7 +257,7 @@ const BlogCardList = () => {
 
 const WindVane = () => {
   return (
-    <div className=" w-full mt-10 md:mt-16 flex flex-col gap-y-8 px-8">
+    <div className=" w-full mt-10 md:mt-16 flex flex-col gap-y-8 px-4">
       <span className="text-2xl flex justify-center md:justify-start items-center gap-x-2 text-center  font-medium leading-loose md:ml-4 font-mono ">
         风向标
         <span className=" i-mingcute-navigation-line cursor-pointer hover:rotate-[360deg] animate-ease-out duration-200" />

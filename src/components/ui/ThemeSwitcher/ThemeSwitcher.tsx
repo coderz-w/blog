@@ -105,7 +105,7 @@ const ThemeIndicator = () => {
 
   return (
     <div
-      className="absolute top-[4px] z-[-1] size-[32px] rounded-full bg-base-100 shadow-[0_1px_2px_0_rgba(127.5,127.5,127.5,.2),_0_1px_3px_0_rgba(127.5,127.5,127.5,.1)] duration-200"
+      className="absolute top-[4px] z-[-1] size-[32px] rounded-full bg-base-100 shadow-[0_1px_2px_0_rgba(127.5,127.5,127.5,.2),_0_1px_3px_0_rgba(127.5,127.5,127.5,.8)] duration-200"
       style={{
         left: { light: 4, system: 36, dark: 68 }[theme],
       }}
