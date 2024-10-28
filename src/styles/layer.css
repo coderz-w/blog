@@ -13,7 +13,7 @@
     height: 0 !important;
   }
 
-  .link--underline,
+  /* .link--underline,
   a {
     color: currentColor;
     background-image: linear-gradient(var(--accent-color), var(--accent-color));
@@ -38,7 +38,7 @@
     &.no-shadow {
       text-shadow: none;
     }
-  }
+  } */
 }
 
 @layer components {

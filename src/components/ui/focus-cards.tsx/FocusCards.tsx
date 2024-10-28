@@ -18,8 +18,6 @@ export const Card = React.memo(
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
   }) => (
     <div
-      onMouseEnter={() => setHovered(index)}
-      onMouseLeave={() => setHovered(null)}
       className={cn(
         'rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-96 w-full transition-all duration-300 ease-out cursor-pointer',
         hovered !== null && hovered !== index && 'blur-sm scale-[0.98]',
@@ -38,19 +36,25 @@ export const Card = React.memo(
           hovered === index ? 'opacity-100' : 'opacity-60',
         )}
       >
-        {/* 标题 */}
-        <div className="text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200 mb-2">
-          {card.title}
-        </div>
-        {/* 日期 */}
-        <div className="text-sm text-neutral-300 flex flex-nowrap gap-x-4">
-          <div className=" flex items-center justify-start gap-x-1">
-            <i className=" i-material-symbols-calendar-clock-outline-sharp text-lg"></i>
-            <span>2024/06/24</span>
+        <div
+          onMouseEnter={() => setHovered(index)}
+          onMouseLeave={() => setHovered(null)}
+          className=" w-full flex flex-col gap-y-1 -my-4"
+        >
+          {/* 标题 */}
+          <div className=" w-full text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200 mb-2">
+            {card.title}
           </div>
-          <div className=" flex items-center justify-start gap-x-1">
-            <i className=" i-material-symbols-edit text-lg"></i>
-            <span>随笔</span>
+          {/* 日期 */}
+          <div className="text-sm text-neutral-300 flex flex-nowrap gap-x-4">
+            <div className=" flex items-center justify-start gap-x-1">
+              <i className=" i-material-symbols-calendar-clock-outline-sharp text-lg"></i>
+              <span>2024/06/24</span>
+            </div>
+            <div className=" flex items-center justify-start gap-x-1">
+              <i className=" i-material-symbols-edit text-lg"></i>
+              <span>随笔</span>
+            </div>
           </div>
         </div>
       </div>
