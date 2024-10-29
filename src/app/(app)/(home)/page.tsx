@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { createElement, useEffect, useState } from 'react';
 import Image from 'next/image';
 
@@ -155,7 +155,7 @@ const Hero = () => {
     <div className="mt-[-2.5rem] min-w-0 md:px-44 max-w-screen overflow-hidden lg:mt-[-6.5rem] lg:h-dvh lg:min-h-[800px]">
       <TwoColumnLayout leftContainerClassName="mt-[110px] lg:mt-0 lg:h-[15rem] lg:h-1/2">
         <>
-          <motion.div
+          <m.div
             className=" relative text-center leading-[4] lg:text-left lg:ml-24 lg:mt-10"
             initial={{ y: 50, opacity: 1 }}
             animate={{ y: 0, opacity: 1 }}
@@ -178,9 +178,9 @@ const Hero = () => {
                   )
                 : null;
             })}
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{
@@ -192,11 +192,11 @@ const Hero = () => {
             className="my-3 text-center lg:text-left lg:ml-24"
           >
             <span className=" opacity-70"> {description}</span>
-          </motion.div>
+          </m.div>
 
           <ul className="center mx-[60px] mt-8 flex flex-wrap gap-6 lg:mx-auto lg:mt-24 lg:justify-start lg:gap-4 lg:ml-24">
             {Object.entries(socialIds).map(([type, id], index) => (
-              <motion.li
+              <m.li
                 key={type}
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -209,7 +209,7 @@ const Hero = () => {
                 className="inline-block"
               >
                 <SocialIcon id={id} type={type} />
-              </motion.li>
+              </m.li>
             ))}
           </ul>
         </>
@@ -243,7 +243,7 @@ const Quote = () => {
   }, []);
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0.0001, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ type: 'spring', damping: 10, stiffness: 100 }}
@@ -255,14 +255,14 @@ const Quote = () => {
       <small className=" flex text-center items-center ">
         {quote.hitokoto}
         <span className=" text-center ml-4">— {quote.from}</span>
-        <motion.span onClick={() => getQuote()} className=" flex items-center ml-3 cursor-pointer">
+        <m.span onClick={() => getQuote()} className=" flex items-center ml-3 cursor-pointer">
           <i className="i-mingcute-refresh-2-line invisible group-hover:visible"></i>
-        </motion.span>
+        </m.span>
       </small>
       <span className="mt-6 animate-bounce">
         <i className="i-mingcute-right-line rotate-90 text-2xl" />
       </span>
-    </motion.div>
+    </m.div>
   );
 };
 
@@ -316,7 +316,7 @@ const WindVane = () => {
         <ul className=" flex flex-col flex-wrap gap-2 gap-y-10 opacity-80 lg:flex-row">
           {windsock.map((item, index) => {
             return (
-              <motion.li
+              <m.li
                 initial={{ opacity: 0.0001, y: 15 }}
                 viewport={{ once: true }}
                 whileInView={{
@@ -358,7 +358,7 @@ const WindVane = () => {
                 {index != windsock.length - 1 && (
                   <span className="mx-4 hidden select-none lg:inline"> · </span>
                 )}
-              </motion.li>
+              </m.li>
             );
           })}
         </ul>

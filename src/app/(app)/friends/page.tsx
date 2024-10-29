@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { memo, useState } from 'react';
 import Image from 'next/image';
 
@@ -32,7 +32,7 @@ const FriendCard = ({ friendModel }: { friendModel: FriendModel }) => {
   const [enter, setEnter] = useState(false);
 
   return (
-    <motion.div
+    <m.div
       key={friendModel.name}
       role="link"
       aria-label={`Go to ${friendModel.name}'s website`}
@@ -56,12 +56,12 @@ const FriendCard = ({ friendModel }: { friendModel: FriendModel }) => {
           {friendModel.desc}
         </span>
       </span>
-    </motion.div>
+    </m.div>
   );
 };
 const LayoutBg = memo(() => {
   return (
-    <motion.span
+    <m.span
       layoutId="bg"
       className="absolute -inset-2 z-[-1] rounded-md bg-slate-200/80 dark:bg-neutral-600/80 pointer-events-none"
       initial={{ opacity: 0.8, scale: 0.8 }}

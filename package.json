@@ -41,7 +41,8 @@
     "tailwind-scrollbar": "^3.1.0",
     "tailwind-variants": "^0.2.1",
     "tailwindcss-animate": "^1.0.7",
-    "tailwindcss-animated": "^1.1.2"
+    "tailwindcss-animated": "^1.1.2",
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.4.1",

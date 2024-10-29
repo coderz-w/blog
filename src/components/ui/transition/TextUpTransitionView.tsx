@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import type { FC, JSX } from 'react';
 import React from 'react';
 
@@ -24,7 +24,7 @@ export const TextUpTransitionView: FC<
   return (
     <div {...rest}>
       {Array.from(text ?? (children as string)).map((char, i) => (
-        <motion.span
+        <m.span
           key={i}
           className="inline-block whitespace-pre"
           initial={{ transform: 'translateY(10px)', opacity: 0.001 }}
@@ -41,7 +41,7 @@ export const TextUpTransitionView: FC<
           }}
         >
           {char}
-        </motion.span>
+        </m.span>
       ))}
     </div>
   );
