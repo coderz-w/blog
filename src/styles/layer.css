@@ -42,10 +42,6 @@
 }
 
 @layer components {
-  .group:hover {
-    opacity: 0.5;
-  }
-
   .animation-blink {
     animation: blink 1.2s linear infinite;
   }
