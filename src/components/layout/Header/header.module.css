@@ -1,12 +1,12 @@
 .header--grid__logo {
-    grid-area: center;
+  grid-area: center;
+}
+
+@screen lg {
+  .header--grid__logo {
+    grid-area: left;
   }
-  
-  @screen lg {
-    .header--grid__logo {
-      grid-area: left;
-    }
-  }
-  .header--grid {
-    grid-template-areas: 'left center right';
-  }
+}
+.header--grid {
+  grid-template-areas: 'left center right';
+}

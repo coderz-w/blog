@@ -51,7 +51,6 @@ const AccentColorStyleInjector = () => {
 
       const [hl, sl, ll] = lightOklch;
       const [hd, sd, ld] = darkOklch;
-      console.log(lightColor, hl, sl, ll);
 
       const [lightBgImage, darkBgImage] = await Promise.all([
         createPngNoiseBackground(lightColor),
