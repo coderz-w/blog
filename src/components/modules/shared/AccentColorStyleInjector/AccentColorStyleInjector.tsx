@@ -2,14 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import Chroma from 'chroma-js';
+import Color from 'colorjs.io';
 
 import { createPngNoiseBackground } from '@/lib/noise';
 
 const hexToOklchString = (hex: string) => {
-  const color = Chroma(hex);
-  const oklab = color.oklab();
-
-  return oklab.map((value: any) => value.toFixed(2)).join(' ');
+  return new Color(hex).oklch;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -51,8 +49,9 @@ const AccentColorStyleInjector = () => {
       const lightOklch = hexToOklchString(lightColor);
       const darkOklch = hexToOklchString(darkColor);
 
-      const [hl, sl, ll] = lightOklch.split(' ');
-      const [hd, sd, ld] = darkOklch.split(' ');
+      const [hl, sl, ll] = lightOklch;
+      const [hd, sd, ld] = darkOklch;
+      console.log(lightColor, hl, sl, ll);
 
       const [lightBgImage, darkBgImage] = await Promise.all([
         createPngNoiseBackground(lightColor),
