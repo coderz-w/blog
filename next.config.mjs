@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 import NextBundleAnalyzer from '@next/bundle-analyzer';
-import withLess from 'next-with-less';
 
 let nextConfig = {
   images: {
@@ -32,4 +31,4 @@ if (process.env.ANALYZE === 'true') {
   })(nextConfig);
 }
 
-export default withLess(nextConfig);
+export default nextConfig;
