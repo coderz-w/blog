@@ -1,6 +1,5 @@
 import React, { PropsWithChildren } from 'react';
 
-import './page.css';
 import text from './test.md';
 
 import { MdiClockOutline } from '@/components/icons/clock';

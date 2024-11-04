@@ -9,7 +9,6 @@ import type { FC, PropsWithChildren } from 'react';
 import { memo, Suspense, useMemo, useRef } from 'react';
 
 import { MParagraph } from './renderbers/paragraph';
-import styles from './markdown.module.css';
 
 export interface MdProps {
   value?: string;
@@ -90,11 +89,7 @@ export const Markdown: FC<MdProps & MarkdownToJSX.Options & PropsWithChildren & 
           style={style}
           {...wrapperProps}
           ref={ref}
-          className={clsx(
-            styles['md'],
-            codeBlockFully ? styles['code-fully'] : undefined,
-            className,
-          )}
+          className={clsx('md', codeBlockFully ? 'code-fully' : undefined, className)}
         >
           {node}
         </As>

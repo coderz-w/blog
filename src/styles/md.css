@@ -1,0 +1,133 @@
+.md {
+  @apply relative;
+}
+
+.md kbd {
+  @apply kbd kbd-sm bg-base-100 text-base-content;
+}
+
+.md .spoiler {
+  position: relative;
+  transition: background 0.5s;
+  text-decoration: none;
+  border-radius: 3px;
+  @apply bg-current text-stone-700 dark:text-neutral-500 print:!bg-transparent print:line-through;
+}
+
+.md .spoiler:hover {
+  background: transparent;
+}
+
+.md .spoiler:not(:hover) * {
+  @apply !text-inherit;
+}
+
+.md.code-fully pre > code {
+  max-height: unset !important;
+}
+
+.md summary {
+  list-style: none;
+}
+
+.md summary:hover {
+  opacity: 0.8;
+}
+
+.md summary::marker {
+  display: none;
+}
+
+.md details summary::before {
+  content: '+ ';
+}
+
+.md details[open] summary::before {
+  content: '- ';
+}
+
+.md details[open] summary::before,
+.md details summary::before {
+  font-weight: 800;
+  font-family: var(--mono-font);
+}
+
+.md sub span,
+.md sup span {
+  border: 0 !important;
+}
+
+.md sub > a,
+.md sup > a {
+  @apply inline-block;
+}
+
+.md sub > a::first-letter,
+.md sup > a::first-letter {
+  @apply hidden;
+}
+
+.md li {
+  margin: 0.5em 0;
+}
+
+.md a.is-link {
+  @apply break-all border-b-[0.5px] border-current text-inherit no-underline duration-200 hover:text-accent;
+}
+
+.md hr {
+  @apply mx-auto w-[60px];
+}
+
+.md input[type='checkbox'] {
+  @apply checkbox checkbox-xs my-0 mr-2 align-text-bottom;
+  vertical-align: inherit;
+}
+
+.md input[type='checkbox']:disabled,
+.md input[type='checkbox']:read-only {
+  @apply cursor-not-allowed;
+}
+
+/* pre {
+    @apply min-w-0 max-w-full flex-shrink flex-grow overflow-x-auto;
+  } */
+
+.md p {
+  @apply break-words;
+}
+
+.md mark {
+  --lightness: 0.3;
+  --highlighted: 1;
+  --highlight: oklch(var(--a) / var(--lightness));
+  background: theme(colors.accent);
+  color: var(--tw-prose-body);
+}
+
+@supports (animation-timeline: view()) {
+  .md mark {
+    --highlighted: 0;
+    background: transparent;
+    animation: highlight steps(1) both;
+    animation-timeline: view();
+    animation-range: entry 100% cover 10%;
+  }
+}
+
+[data-theme='dark'] .md mark {
+  --lightness: 0.35;
+}
+
+.md mark span {
+  background: linear-gradient(120deg, var(--highlight, lightblue) 50%, transparent 50%) 110% 0 /
+    200% 100% no-repeat;
+  background-position: calc((1 - var(--highlighted)) * 110%) 0;
+  transition: background-position 1s;
+}
+
+@keyframes highlight {
+  to {
+    --highlighted: 1;
+  }
+}

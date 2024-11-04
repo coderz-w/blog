@@ -2,70 +2,57 @@
   --padding-h: -1rem;
   width: 100%;
 }
-
-@media (min-width: 1024px) { /* lg breakpoint */
+@media (min-width: 1024px) {
+  /* lg breakpoint */
   .with-indent {
     --padding-h: -45px;
   }
 }
-
 :global .paragraph:first-child {
   margin-bottom: 4rem;
 }
-
 .with-indent ul span,
 .with-indent .paragraph span {
   border-bottom: 1px solid;
-
   /* @apply border-accent/20 dark:border-accent/20; */
   @apply border-accent/10; /* Tailwind CSS特性，需要替换为具体的CSS */
 }
-
 @media print {
   .with-indent ul span,
   .with-indent .paragraph span {
     @apply border-none; /* Tailwind CSS特性，需要替换为具体的CSS */
   }
 }
-
 .with-indent blockquote::before {
   display: none !important;
 }
-
 .with-indent blockquote .paragraph > span {
   margin-left: 0 !important;
 }
-
 .with-indent blockquote .paragraph:first-child::first-letter {
   float: none !important;
   font-size: inherit !important;
   margin: 0;
 }
-
 .with-indent blockquote .paragraph,
 .with-indent blockquote > ph {
   padding: 10px 0;
   margin: 0;
 }
-
 .with-indent blockquote .paragraph:first-child {
   margin-bottom: 0;
 }
-
 .with-indent blockquote {
   margin-left: var(--padding-h);
   margin-right: var(--padding-h);
   line-height: 1.8;
   padding: 1em 1em 1em 2em;
-
   @apply bg-accent/20 font-normal dark:bg-accent/5; /* Tailwind CSS特性，需要替换为具体的CSS */
   @apply border-none px-12 !outline-none; /* Tailwind CSS特性，需要替换为具体的CSS */
 }
-
 .with-indent blockquote span::first-letter {
   @apply !float-none !text-[1em]; /* Tailwind CSS特性，需要替换为具体的CSS */
 }
-
 @media (max-width: 599px) {
   .with-indent blockquote {
     max-width: 100vw;
@@ -74,28 +61,23 @@
     padding: 1em 3em;
   }
 }
-
 .with-indent .paragraph:not(:nth-child(1)) {
   text-indent: 2rem;
 }
-
 .with-indent main > p:first-child {
   margin-bottom: 2rem;
 }
-
-.with-indent main > .paragraph:not(
-  :where([class~='not-prose'], [class~='not-prose'] *)
-):first-child::first-letter {
+.with-indent
+  main
+  > .paragraph:not(:where([class~='not-prose'], [class~='not-prose'] *)):first-child::first-letter {
   float: left;
   font-size: 2.4em;
   margin: 0 0.2em 0 0;
 }
-
 .with-serif main {
-  @apply font-serif text-lg leading-[1.8]; 
+  @apply font-serif text-lg leading-[1.8];
 }
-
 .with-serif strong,
 .with-serif b {
-  @apply font-sans; 
+  @apply font-sans;
 }

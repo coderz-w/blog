@@ -7,6 +7,7 @@ import WebAppProviders from '@/components/providers/root';
 import AccentColorStyleInjector from '@/components/modules/shared/AccentColorStyleInjector';
 import Root from '@/components/layout/Root';
 import { seo } from '~/index';
+import { sansFont, serifFont } from '@/lib/fonts';
 
 export const metadata: Metadata = {
   metadataBase: seo.url,
@@ -61,7 +62,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
         <SayHi />
         <AccentColorStyleInjector />
       </head>
-      <body>
+      <body className={`${sansFont.variable} ${serifFont.variable} m-0 h-full p-0 font-sans`}>
         <WebAppProviders>
           <div data-theme>
             <Root>{children}</Root>

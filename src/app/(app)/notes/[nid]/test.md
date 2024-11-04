@@ -1,12 +1,3 @@
----
-title: NewBlog
-date: 2024-02-03
-categories: Project
-excerpt: 有一个由自己打造的博客，是每个前端开发必备项目。我通过半个月时间，尝试Next搭建了一个博客。
----
-
-# 前言
-
 原本，我利用 Hexo 搭建了一个个人博客，刚开始还挺新鲜的，但慢慢就觉得样式单调，而且我想加入评论以及流量监控很麻烦。所以想着要不自己手写一个，更好控制也能自定义样式。于是 yyblog 就孕育而生
 
 # 结构
@@ -52,7 +43,7 @@ export async function compileFile(): Promise<mdFile[]> {
   const fileList = fs.readdirSync(_postFolder);
   for (const file of fileList) {
     const filePath = path.join(_postFolder, file);
-    const fileContent = fs.readFileSync(filePath, "utf-8");
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
     const parsedFile = matter(fileContent);
     const newMatter = {
       ...parsedFile,
@@ -84,20 +75,17 @@ export async function compileFile(): Promise<mdFile[]> {
 重点在于`HtmlToNext`函数:
 
 ```tsx
-import he from "he";
+import he from 'he';
 function ImageRepimg(html: string) {
   const processedHtml = html.replace(
     /<img\s+src="(.*?)"\s+alt="(.*?)".*?\/>/g,
     function (match, src, alt) {
-      const modifiedSrc = src.split("/");
+      const modifiedSrc = src.split('/');
       const newSrc = modifiedSrc[modifiedSrc.length - 1]; //修改后的SRC
 
       const modifiedAlt = alt; // 修改后的alt
 
-      return `<Image src={${newSrc.slice(
-        0,
-        newSrc.lastIndexOf("."),
-      )}} alt="${modifiedAlt}" 
+      return `<Image src={${newSrc.slice(0, newSrc.lastIndexOf('.'))}} alt="${modifiedAlt}" 
       sizes="100vw"
       style={{
         width: '100%',
@@ -108,7 +96,7 @@ function ImageRepimg(html: string) {
   return processedHtml;
 }
 function replaceClassName(html: string) {
-  const processedHtml = html.replace(/class=/g, "className=");
+  const processedHtml = html.replace(/class=/g, 'className=');
   return processedHtml;
 }
 function highLightHtml(html: string) {
@@ -118,7 +106,7 @@ function highLightHtml(html: string) {
     (_, language, codeContent) => {
       //转义符删除
       const decodeCode = he.decode(codeContent);
-      const codeWithBackslash = decodeCode.replace(/([^\w\s"'])/g, "\\$1");
+      const codeWithBackslash = decodeCode.replace(/([^\w\s"'])/g, '\\$1');
       return `<SyntaxHighlighter language="${language}" style={oneLight} showLineNumbers>{ \`${codeWithBackslash}\` }</SyntaxHighlighter>`;
     },
   );
@@ -133,7 +121,7 @@ export function HtmlToNext(html: string) {
   //高亮代码
   const step3Html = highLightHtml(step2Html);
   //闭合分割线
-  const step4Html = step3Html.replace(/<hr>/g, "<hr />");
+  const step4Html = step3Html.replace(/<hr>/g, '<hr />');
   return step4Html;
 }
 ```
@@ -147,38 +135,33 @@ export function HtmlToNext(html: string) {
 配置的教程在[这里](https://locize.com/blog/next-app-dir-i18n/)
 
 ```javascript
-import { NextResponse } from "next/server";
-import acceptLanguage from "accept-language";
-import { fallbackLng, languages, cookieName } from "@/app/i18n/setting";
+import { NextResponse } from 'next/server';
+import acceptLanguage from 'accept-language';
+import { fallbackLng, languages, cookieName } from '@/app/i18n/setting';
 
 acceptLanguage.languages(languages);
 
 export const config = {
   // matcher: '/:lng*'
-  matcher: ["/((?!api|_next/static|_next/image|imgs|favicon.ico|sw.js).*)"],
+  matcher: ['/((?!api|_next/static|_next/image|imgs|favicon.ico|sw.js).*)'],
 };
 export function middleware(req) {
   let lng;
-  if (req.cookies.has(cookieName))
-    lng = acceptLanguage.get(req.cookies.get(cookieName).value);
-  if (!lng) lng = acceptLanguage.get(req.headers.get("Accept-Language"));
+  if (req.cookies.has(cookieName)) lng = acceptLanguage.get(req.cookies.get(cookieName).value);
+  if (!lng) lng = acceptLanguage.get(req.headers.get('Accept-Language'));
   if (!lng) lng = fallbackLng;
 
   // Redirect if lng in path is not supported
 
   if (
     !languages.some((loc) => req.nextUrl.pathname.startsWith(`/${loc}`)) &&
-    !req.nextUrl.pathname.startsWith("/_next")
+    !req.nextUrl.pathname.startsWith('/_next')
   ) {
-    return NextResponse.redirect(
-      new URL(`/${lng}${req.nextUrl.pathname}`, req.url),
-    );
+    return NextResponse.redirect(new URL(`/${lng}${req.nextUrl.pathname}`, req.url));
   }
-  if (req.headers.has("referer")) {
-    const refererUrl = new URL(req.headers.get("referer"));
-    const lngInReferer = languages.find((l) =>
-      refererUrl.pathname.startsWith(`/${l}`),
-    );
+  if (req.headers.has('referer')) {
+    const refererUrl = new URL(req.headers.get('referer'));
+    const lngInReferer = languages.find((l) => refererUrl.pathname.startsWith(`/${l}`));
     const response = NextResponse.next();
     if (lngInReferer) response.cookies.set(cookieName, lngInReferer);
     return response;
@@ -195,7 +178,7 @@ export function middleware(req) {
 ```js
 export const config = {
   // matcher: '/:lng*'
-  matcher: ["/((?!api|_next/static|_next/image|imgs|favicon.ico|sw.js).*)"],
+  matcher: ['/((?!api|_next/static|_next/image|imgs|favicon.ico|sw.js).*)'],
 };
 ```
 
