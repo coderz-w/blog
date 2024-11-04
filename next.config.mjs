@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 import NextBundleAnalyzer from '@next/bundle-analyzer';
+import withLess from 'next-with-less';
 
 let nextConfig = {
   images: {
@@ -15,6 +16,14 @@ let nextConfig = {
       },
     ],
   },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.md$/,
+      use: 'raw-loader',
+    });
+
+    return config;
+  },
 };
 
 if (process.env.ANALYZE === 'true') {
@@ -23,4 +32,4 @@ if (process.env.ANALYZE === 'true') {
   })(nextConfig);
 }
 
-export default nextConfig;
+export default withLess(nextConfig);

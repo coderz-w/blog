@@ -26,6 +26,7 @@
     "next-env.d.ts",
     "**/**/*.ts",
     "**/*.tsx",
+    "**/**/*.md",
     ".next/types/**/*.ts",
     "commitlint.config.mjs",
     "eslint.config.cjs"
