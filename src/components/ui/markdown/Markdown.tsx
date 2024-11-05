@@ -10,6 +10,7 @@ import { memo, Suspense, useMemo, useRef } from 'react';
 
 import { MParagraph } from './renderbers/paragraph';
 import { MHeader } from './renderbers/heading';
+import { MarkdownImage } from './renderbers/images';
 
 export interface MdProps {
   value?: string;
@@ -56,6 +57,7 @@ export const Markdown: FC<MdProps & MarkdownToJSX.Options & PropsWithChildren & 
         wrapper: null,
         overrides: {
           p: MParagraph,
+          img: MarkdownImage,
           script: allowsScript ? Script : undefined,
           ...overrides,
         },

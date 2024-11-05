@@ -11,24 +11,21 @@
 :global .paragraph:first-child {
   margin-bottom: 4rem;
 }
-.with-indent ul span,
-.with-indent .paragraph span {
-  border-bottom: 1px solid;
-  /* @apply border-accent/20 dark:border-accent/20; */
-  @apply border-accent/10; /* Tailwind CSS特性，需要替换为具体的CSS */
-}
-@media print {
-  .with-indent ul span,
-  .with-indent .paragraph span {
-    @apply border-none; /* Tailwind CSS特性，需要替换为具体的CSS */
-  }
-}
+
 .with-indent blockquote::before {
   display: none !important;
 }
 .with-indent blockquote .paragraph > span {
   margin-left: 0 !important;
 }
+.mdImg span {
+  display: inline-block !important;
+  margin-left: 0 !important;
+  margin-right: 0 auto; 
+  padding: 0; 
+  text-align: center;
+}
+
 .with-indent blockquote .paragraph:first-child::first-letter {
   float: none !important;
   font-size: inherit !important;
