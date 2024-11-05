@@ -3,6 +3,7 @@
 # 结构
 
 整个博客，不仅仅由 yyblog 组成，还有 ybg-cli 脚手架，用于自动创建删除文章以及编译文章。
+![Minion](https://octodex.github.com/images/minion.png)
 
 - **yyblog**
 
@@ -19,6 +20,12 @@
 ## yyblog
 
 采用`Nextjs`+`Typescript`+`Tailwindw`为主要技术。
+
+<details>
+  <summary>点击展开更多信息</summary>
+  这是详细的内容，可以在点击时展开。
+</details>
+
 
 效仿 Hexo 采用纯前端，文章编写删除编译都在本地运行，对前端工程师更友好。
 Nextjs 同时也支持全栈开发。简单的 sql 语句也能够对文章进行增删改查。

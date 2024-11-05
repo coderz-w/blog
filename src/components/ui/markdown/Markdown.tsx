@@ -9,6 +9,7 @@ import type { FC, PropsWithChildren } from 'react';
 import { memo, Suspense, useMemo, useRef } from 'react';
 
 import { MParagraph } from './renderbers/paragraph';
+import { MHeader } from './renderbers/heading';
 
 export interface MdProps {
   value?: string;
@@ -59,11 +60,19 @@ export const Markdown: FC<MdProps & MarkdownToJSX.Options & PropsWithChildren & 
           ...overrides,
         },
         extendsRules: {
+          heading: {
+            react(node, output, state) {
+              return (
+                <MHeader id={node.id} level={node.level} key={state?.key}>
+                  {output(node.content, state!)}
+                </MHeader>
+              );
+            },
+          },
           ...extendsRules,
           ...renderers,
         },
         additionalParserRules: {
-          // Additional parser rules can be defined here
           ...additionalParserRules,
         },
         ...rest,

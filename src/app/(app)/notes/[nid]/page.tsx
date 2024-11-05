@@ -29,6 +29,7 @@ const PageTransition = ({ children }: PropsWithChildren) => {
         opacity: 1,
         transition: { duration: 0.5, type: 'spring', damping: 20, stiffness: 200 },
       }}
+      className=" min-w-0"
     >
       {children}
     </m.div>
