@@ -91,7 +91,17 @@ export const Markdown: FC<MdProps & MarkdownToJSX.Options & PropsWithChildren & 
               );
             },
           },
+          codeFenced: {
+            parse(capture) {
+              return {
+                content: capture[4],
+                lang: capture[2] || undefined,
+                type: 'codeBlock',
 
+                attrs: capture[3],
+              };
+            },
+          },
           ...extendsRules,
           ...renderers,
         },
