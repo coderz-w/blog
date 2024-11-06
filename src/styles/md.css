@@ -132,15 +132,14 @@
   }
 }
 
-.prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+.prose :where(code):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
   opacity: 0.7;
   font-weight: 600 !important;
   font-size: 0.875em !important;
 }
 
-.prose :where(code):not(:where([class~="not-prose"] *, pre *)) {
+.prose :where(code):not(:where([class~='not-prose'] *, pre *)) {
   padding: 1px 8px;
-  border-radius: .0625rem;
+  border-radius: 0.0625rem;
   color: var(--accent-color) !important;
 }
-

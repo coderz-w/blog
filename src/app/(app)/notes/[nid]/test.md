@@ -4,10 +4,14 @@
 
 整个博客，不仅仅由 yyblog 组成，还有 ybg-cli 脚手架，用于自动创建删除文章以及编译文章。
 ![Minion](https://octodex.github.com/images/minion.png)
+
 ```javascript
-console.log("Hello, world!");console.log("Hello, world!");
-console.log("Hello, world!");console.log("Hello, world!");
-console.log("Hello, world!");console.log("Hello, world!");
+console.log('Hello, world!');
+console.log('Hello, world!');
+console.log('Hello, world!');
+console.log('Hello, world!');
+console.log('Hello, world!');
+console.log('Hello, world!');
 ```
 
 - **yyblog**
