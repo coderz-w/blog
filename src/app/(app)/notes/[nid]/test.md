@@ -7,11 +7,6 @@
 
 ```javascript
 console.log('Hello, world!');
-console.log('Hello, world!');
-console.log('Hello, world!');
-console.log('Hello, world!');
-console.log('Hello, world!');
-console.log('Hello, world!');
 ```
 
 - **yyblog**
