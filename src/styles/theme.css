@@ -39,3 +39,92 @@ video.fit {
   height: auto;
   object-fit: cover;
 }
+
+.code-card {
+  @apply relative my-6 overflow-hidden rounded-md;
+  font-size: 14px;
+}
+
+.code-card pre {
+  @apply !m-0 !p-0;
+  font-size: min(1em, 16px);
+}
+
+.code-card pre code {
+  @apply flex flex-col;
+}
+
+.code-card .shiki,
+.code-card code {
+  @apply !bg-transparent;
+}
+
+.code-card .line {
+  @apply block px-5;
+}
+
+.code-card .line > span:last-child {
+  @apply mr-5;
+}
+
+.code-card .line::after {
+  content: ' ';
+}
+
+.code-card .highlighted,
+.code-card .diff {
+  @apply relative break-all;
+}
+
+.code-card .highlighted::before,
+.code-card .diff::before {
+  @apply absolute left-0 top-0 h-full w-[2px];
+  content: '';
+}
+
+.code-card .diff.add {
+  @apply bg-green-100 dark:bg-green-900;
+}
+
+.code-card .diff.add::before {
+  @apply bg-green-500;
+}
+
+.code-card .diff.add::after {
+  content: ' +';
+  @apply absolute left-0 text-green-500;
+}
+
+.code-card .diff.remove {
+  @apply bg-red-100 dark:bg-red-900;
+}
+
+.code-card .diff.remove::before {
+  @apply bg-red-500;
+}
+
+.code-card .diff.remove::after {
+  content: ' -';
+  @apply absolute left-0 text-red-500;
+}
+
+.code-card .highlighted {
+  @apply bg-accent/20;
+}
+
+.code-card .highlighted::before {
+  @apply bg-accent;
+}
+
+.code-card .scroll-container pre::-webkit-scrollbar-track {
+  margin-left: 1rem;
+  margin-right: var(--sr-margin, 0);
+}
+
+.code-card .scroll-container pre::-webkit-scrollbar {
+  background-color: transparent !important;
+}
+
+.code-card pre {
+  @apply rounded-none;
+}

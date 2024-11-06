@@ -12,6 +12,7 @@ import { MParagraph } from './renderbers/paragraph';
 import { MHeader } from './renderbers/heading';
 import { MarkdownImage } from './renderbers/images';
 import { MLink } from './renderbers/Mlink';
+import { CodeBlockRender } from './renderbers/CodeBlock';
 
 export interface MdProps {
   value?: string;
@@ -111,6 +112,18 @@ export const Markdown: FC<MdProps & MarkdownToJSX.Options & PropsWithChildren & 
                 >
                   {node.content}
                 </code>
+              );
+            },
+          },
+          codeBlock: {
+            react(node, output, state) {
+              return (
+                <CodeBlockRender
+                  key={state?.key}
+                  content={node.content}
+                  lang={node.lang}
+                  attrs={node?.attrs}
+                />
               );
             },
           },
