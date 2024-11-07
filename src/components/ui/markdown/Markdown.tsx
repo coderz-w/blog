@@ -2,7 +2,10 @@
 
 import { clsx } from 'clsx';
 import type { MarkdownToJSX } from 'markdown-to-jsx';
-import { compiler, sanitizeUrl } from 'markdown-to-jsx';
+import {
+  compiler,
+  //  sanitizeUrl
+} from 'markdown-to-jsx';
 import Script from 'next/script';
 import type React from 'react';
 import type { FC, PropsWithChildren } from 'react';
@@ -11,7 +14,7 @@ import { memo, Suspense, useMemo, useRef } from 'react';
 import { MParagraph } from './renderbers/paragraph';
 import { MHeader } from './renderbers/heading';
 import { MarkdownImage } from './renderbers/images';
-import { MLink } from './renderbers/Mlink';
+// import { MLink } from './renderbers/Mlink';
 import { CodeBlockRender } from './renderbers/CodeBlock';
 
 export interface MdProps {
@@ -44,8 +47,6 @@ export const Markdown: FC<MdProps & MarkdownToJSX.Options & PropsWithChildren & 
       ...rest
     } = props;
 
-    console.log(renderers);
-
     const ref = useRef<HTMLDivElement>(null);
 
     const node = useMemo(() => {
@@ -73,25 +74,25 @@ export const Markdown: FC<MdProps & MarkdownToJSX.Options & PropsWithChildren & 
               );
             },
           },
-          link: {
-            react(node, output, state) {
-              const { target, title } = node;
+          // link: {
+          //   react(node, output, state) {
+          //     const { target, title } = node;
 
-              let realText = '';
+          //     let realText = '';
 
-              for (const child of node.content) {
-                if (child.type === 'text') {
-                  realText += child.content;
-                }
-              }
+          //     for (const child of node.content) {
+          //       if (child.type === 'text') {
+          //         realText += child.content;
+          //       }
+          //     }
 
-              return (
-                <MLink href={sanitizeUrl(target)!} title={title} key={state?.key} text={realText}>
-                  {output(node.content, state!)}
-                </MLink>
-              );
-            },
-          },
+          //     return (
+          //       <MLink href={sanitizeUrl(target)!} title={title} key={state?.key} text={realText}>
+          //         {output(node.content, state!)}
+          //       </MLink>
+          //     );
+          //   },
+          // },
           codeFenced: {
             parse(capture) {
               return {

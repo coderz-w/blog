@@ -9,6 +9,9 @@ import {
   PageTransition,
 } from './pageExtra';
 
+import { LayoutRightSidePortal } from '@/providers/shared/LayoutRightSideProvider';
+import { ArticleRightAside } from '@/components/modules/shared/ArticleRightAside';
+
 export default async function Page({ params }: { params: Record<string, any> }) {
   const { nid } = params;
   console.log('id', nid);
@@ -32,6 +35,9 @@ const PageInner = () => (
     </div>
     <IndentArticleContainer>
       <NoteMarkdown />
+      <LayoutRightSidePortal>
+        <ArticleRightAside></ArticleRightAside>
+      </LayoutRightSidePortal>
     </IndentArticleContainer>
   </>
 );

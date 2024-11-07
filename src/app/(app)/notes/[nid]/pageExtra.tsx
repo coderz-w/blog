@@ -2,14 +2,14 @@
 
 import React, { PropsWithChildren, useEffect, useRef } from 'react';
 import { m } from 'framer-motion';
+import { useShallow } from 'zustand/react/shallow';
 
 import text from './test.md';
 
 import { MdiClockOutline } from '@/components/icons/clock';
 import { cn } from '@/lib/helper';
 import { MainMarkdown } from '@/components/ui/markdown';
-
-console.log(text);
+import { useMainArticleStore } from '@/store/mainArticleStore';
 
 export const NoteTitle = () => {
   const title = '我的一篇文章';
@@ -55,17 +55,24 @@ export const NoteMarkdown = () => {
 };
 
 export const PaperLayout = ({ children, className }: PropsWithChildren<{ className?: string }>) => {
+  const { setOffsetHeight, setElement } = useMainArticleStore(
+    useShallow((state) => ({
+      setOffsetHeight: state.setOffsetHeight,
+      setElement: state.setElement,
+    })),
+  );
+
   const paperLayoutRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!paperLayoutRef.current) return;
-    //侧边可能需要
+    if (setElement) setElement(paperLayoutRef.current);
 
     const mainHeight = paperLayoutRef.current.offsetHeight;
-    console.log(mainHeight);
+    setOffsetHeight(mainHeight);
 
     const ob = new ResizeObserver((entries) => {
       const mainHeight = (entries[0].target as HTMLElement).offsetHeight;
-      if (mainHeight) console.log(mainHeight);
+      if (mainHeight) setOffsetHeight(mainHeight);
     });
     ob.observe(paperLayoutRef.current);
 

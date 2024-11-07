@@ -16,7 +16,6 @@ export const LayoutRightSideProvider = ({ className }: { className: string }) =>
   );
   const divRef = React.useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
-    console.log('LayoutRightSideProvider', divRef.current);
     setElement(divRef.current!);
 
     return () => {
