@@ -31,7 +31,7 @@ function useActiveId($headings: HTMLHeadingElement[]) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             startTransition(() => {
-              setActiveId(entry.target.id);
+              if (activeId != entry.target.id) setActiveId(entry.target.id);
             });
           }
         });
