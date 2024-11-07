@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer
       data-hide-print
-      className="relative z-[1] h-28 mt-32 pb-6 border-t border-x-uk-separator-opaque-light py-6 text-base-content/80 dark:border-white/10"
+      className="relative z-[1] h-28 mt-44 pb-6 border-t border-x-uk-separator-opaque-light py-6 text-base-content/80 dark:border-white/10"
     >
       <div className="px-4 sm:px-8 h-full">
         <div className="relative mx-auto max-w-7xl lg:px-8 h-full flex flex-row items-center justify-around">

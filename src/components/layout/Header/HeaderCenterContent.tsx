@@ -8,14 +8,10 @@ import Link from 'next/link';
 import { MenuPopover } from './MenuPopover';
 
 import {
-  FaSolidCircleNotch,
   FaSolidComments,
   FaSolidDotCircle,
   FaSolidFeatherAlt,
-  FaSolidHistory,
   FaSolidUserFriends,
-  IcTwotoneSignpost,
-  IonBook,
   MdiFlask,
 } from '@/components/icons/menu-collection';
 import { cn } from '@/lib/helper';
@@ -186,56 +182,23 @@ const headerMenuConfig: IHeaderMenu[] = [
   },
   {
     title: '文稿',
-    path: '/posts',
-    type: 'Post',
-    subMenu: [],
-    icon: React.createElement(IcTwotoneSignpost),
-  },
-  {
-    title: '手记',
     type: 'Note',
-    path: '/notes',
+    path: '/list',
     icon: React.createElement(FaSolidFeatherAlt),
-  },
-
-  {
-    title: '时光',
-    icon: React.createElement(FaSolidHistory),
-    path: '/timeline',
-    subMenu: [
-      {
-        title: '手记',
-        icon: React.createElement(FaSolidFeatherAlt),
-        path: '/timeline?type=note',
-      },
-      {
-        title: '文稿',
-        icon: React.createElement(IonBook),
-        path: '/timeline?type=post',
-      },
-    ],
   },
   {
     title: '友链',
     icon: React.createElement(FaSolidUserFriends),
     path: '/friends',
   },
-
   {
-    title: '更多',
-    icon: React.createElement(FaSolidCircleNotch),
-    path: '#',
-    subMenu: [
-      {
-        title: '项目',
-        icon: React.createElement(MdiFlask),
-        path: '/projects',
-      },
-      {
-        title: '自述',
-        path: '/about',
-        icon: React.createElement(FaSolidComments),
-      },
-    ],
+    title: '项目',
+    icon: React.createElement(MdiFlask),
+    path: '/projects',
+  },
+  {
+    title: '自述',
+    path: '/about',
+    icon: React.createElement(FaSolidComments),
   },
 ];
