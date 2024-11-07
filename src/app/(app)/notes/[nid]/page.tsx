@@ -11,6 +11,7 @@ import {
 
 import { LayoutRightSidePortal } from '@/providers/shared/LayoutRightSideProvider';
 import { ArticleRightAside } from '@/components/modules/shared/ArticleRightAside';
+import { Signature } from '@/components/modules/shared/signature';
 
 export default async function Page({ params }: { params: Record<string, any> }) {
   const { nid } = params;
@@ -35,6 +36,9 @@ const PageInner = () => (
     </div>
     <IndentArticleContainer>
       <NoteMarkdown />
+      <div className="signature-animated my-2 flex w-full justify-end" data-hide-print="true">
+        <Signature />
+      </div>
       <LayoutRightSidePortal>
         <ArticleRightAside></ArticleRightAside>
       </LayoutRightSidePortal>

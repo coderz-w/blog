@@ -101,29 +101,28 @@
     stroke-dasharray: 2400;
     stroke-dashoffset: 2400;
     fill: transparent;
-    animation: drawSignature 8s linear infinite both;
-    stroke-width: 2px;
+    animation: drawSignature 12s linear infinite both;
+    stroke-width: 1px;
     stroke: theme('colors.base-content');
   }
-
   @keyframes drawSignature {
     0% {
       stroke-dashoffset: 2400;
     }
-    15% {
-      fill: transparent;
-    }
-    35%,
-    75% {
+    50% {
       stroke-dashoffset: 0;
+    }
+    60% {
       fill: theme('colors.base-content');
     }
-    90%,
-    100% {
+    90% {
       stroke-dashoffset: 2400;
+    }
+    100% {
       fill: transparent;
     }
   }
+  
 
   .animation-wave {
     animation: wave 2s infinite;

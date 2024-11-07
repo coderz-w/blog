@@ -151,6 +151,8 @@ const MemoedItem = memo<{
   const { heading, isActive, onClick, rootDepth } = props;
   const itemRef = useRef<HTMLLIElement>(null);
 
+  console.log(heading);
+
   return (
     <m.li
       initial={{ x: 60, opacity: 0 }}
