@@ -31,7 +31,12 @@ function useActiveId($headings: HTMLHeadingElement[]) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             startTransition(() => {
-              if (activeId != entry.target.id) setActiveId(entry.target.id);
+              if (activeId != entry.target.id) {
+                setActiveId(entry.target.id);
+
+                const { state } = history;
+                history.replaceState(state, '', `#${entry.target.id}`);
+              }
             });
           }
         });
@@ -106,6 +111,9 @@ export const TocTree = ({
       const handle = () => {
         springScrollToElement($el, -100).then(() => {
           setActiveId?.(anchorId);
+
+          const { state } = history;
+          history.replaceState(state, '', `#${anchorId}`);
         });
       };
 
