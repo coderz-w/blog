@@ -20,7 +20,7 @@ export const PostItem = memo<{ data: PostItemType }>(function PostItem({ data })
         <span className=" flex min-w-0 items-center space-x-1 text-sm">
           <MdiClockOutline />
           {data.createdAt ? dayjs(data.createdAt).format('YYYY 年 M 月 D 日') : '1999 年 9 月 9 日'}
-          {data.updatedAt && <>&nbsp;&nbsp;(已编辑)</>}
+          {data.modified && <>&nbsp;&nbsp;(已编辑)</>}
         </span>
         <span className="flex min-w-0 items-center space-x-1 text-sm">
           <FeHash className="translate-y-[0.5px]" />
