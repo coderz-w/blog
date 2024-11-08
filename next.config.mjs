@@ -20,7 +20,7 @@ let nextConfig = {
     config.module.rules.push({
       test: /\.md$/,
       use: 'raw-loader',
-      type:'asset/source'
+      type: 'asset/source',
     });
 
     return config;
