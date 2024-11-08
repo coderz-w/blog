@@ -10,7 +10,7 @@ export default function Friends() {
   return (
     <div>
       <header className="prose prose-p:my-2 font-mono">
-        <h1>朋友们</h1>
+        <h2>朋友们</h2>
         <h3>海内存知己，天涯若比邻</h3>
       </header>
 
@@ -24,16 +24,16 @@ export default function Friends() {
 const FriendCardList = ({ data }: { data: FriendModel[] }) => (
   <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
     {data.map((friendModel) => {
-      return <FriendCard friendModel={friendModel} />;
+      return <FriendCard key={friendModel.url} friendModel={friendModel} />;
     })}
   </div>
 );
+
 const FriendCard = ({ friendModel }: { friendModel: FriendModel }) => {
   const [enter, setEnter] = useState(false);
 
   return (
     <m.div
-      key={friendModel.name}
       role="link"
       aria-label={`Go to ${friendModel.name}'s website`}
       className="relative flex flex-col items-center justify-center cursor-pointer"

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 type BlogPostCardProps = {
   title: string;
@@ -30,7 +31,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({
       <div className="relative z-10 flex flex-col justify-between h-full p-6">
         {/* 顶部头像 */}
         <div className="flex justify-start items-center mb-4">
-          <img src="/path-to-avatar.png" alt="avatar" className="h-10 w-10 rounded-full" />
+          <Image src="/path-to-avatar.png" alt="avatar" className="h-10 w-10 rounded-full" />
         </div>
 
         {/* 中间主要标题 */}

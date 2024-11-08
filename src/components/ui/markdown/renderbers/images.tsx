@@ -1,8 +1,17 @@
+import Image from 'next/image';
+
+// https://github.com/vercel/next.js/discussions/18474
 export const MarkdownImage = (props: { src: string; alt?: string }) => {
   return (
-    <span className="flex w-full flex-col items-center border-none mdImg">
-      <img src={props.src} alt={props.alt} loading="lazy" className="mx-auto w-[50%] rounded-md" />
-      <span className=" w-full">居中文本</span>
+    <span className=" relative w-full border-none">
+      <Image
+        width={0}
+        height={0}
+        sizes="100vw"
+        src={props.src}
+        alt={props.alt ?? 'image'}
+        className=" w-full h-auto rounded-md"
+      />
     </span>
   );
 };

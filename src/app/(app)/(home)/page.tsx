@@ -8,11 +8,8 @@ import { TextUpTransitionView } from '@/components/ui/transition/TextUpTransitio
 import { SocialIcon } from '@/components/modules/home/SocialIcon';
 import {
   FaSolidFeatherAlt,
-  FaSolidHistory,
   FaSolidUserFriends,
-  IcTwotoneSignpost,
   MdiFlask,
-  MdiLightbulbOn20,
   RMixPlanet,
 } from '@/components/icons/menu-collection';
 import { cn } from '@/lib/helper';
@@ -21,31 +18,14 @@ import { FocusCards } from '@/components/ui/focus-cards.tsx';
 const windsock = [
   {
     title: '文稿',
-    path: '/posts',
-    type: 'Post',
-    subMenu: [],
-    icon: IcTwotoneSignpost,
-  },
-  {
-    title: '手记',
     type: 'Note',
-    path: '/notes',
+    path: '/list',
     icon: FaSolidFeatherAlt,
-  },
-  {
-    title: '度过的时光',
-    icon: FaSolidHistory,
-    path: '/timeline',
   },
   {
     title: '朋友们',
     icon: FaSolidUserFriends,
     path: '/friends',
-  },
-  {
-    title: '写下一点思考',
-    icon: MdiLightbulbOn20,
-    path: '/thinking',
   },
   {
     title: '看看我做些啥',
