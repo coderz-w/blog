@@ -1,10 +1,8 @@
 /** @type {import('next').NextConfig} */
 import NextBundleAnalyzer from '@next/bundle-analyzer';
-import { type } from 'os';
 
 let nextConfig = {
   images: {
-    domains: ['innei.in', 'images.unsplash.com', 'assets.aceternity.com'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -16,10 +14,11 @@ let nextConfig = {
       },
     ],
   },
+  // type: 'asset/source' 会让 Webpack 将文件内容直接作为字符串导出，而不是生成特定的资源文件路径。这种方式特别适用于将 Markdown、SVG、文本文件等直接导入为字符串内容的场景。
   webpack(config) {
     config.module.rules.push({
       test: /\.md$/,
-      use: 'raw-loader',
+      // use: 'raw-loader',
       type: 'asset/source',
     });
 

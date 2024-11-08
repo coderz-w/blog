@@ -5,13 +5,10 @@ import React from 'react';
 import { m } from 'framer-motion';
 
 import { PostItem } from '@/components/modules/list/PostItem';
+import type { PostItem as PostItemType } from '@/core';
 
 interface AnimatedPostItemProps {
-  item: {
-    id: number;
-    title: string;
-    content: string;
-  };
+  item: PostItemType;
   index: number;
 }
 
@@ -29,7 +26,7 @@ const AnimatedPostItem: React.FC<AnimatedPostItemProps> = ({ item, index }) => {
           stiffness: 100,
         },
       }}
-      key={item.id}
+      key={item.path}
     >
       <PostItem data={item} />
     </m.li>

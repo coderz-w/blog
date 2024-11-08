@@ -2,11 +2,13 @@
   {
     "path": "yyblog.md",
     "title": "yyblog",
-    "tag": "技术/react"
+    "tag": "技术/react",
+    "coverImage": "yyblog-cover.jpg"
   },
   {
     "path": "react19.md",
     "title": "react19",
-    "tag": "随笔/生活"
+    "tag": "随笔/生活",
+    "coverImage": "yyblog-cover.jpg"
   }
 ]
