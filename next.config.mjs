@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 import NextBundleAnalyzer from '@next/bundle-analyzer';
+import { type } from 'os';
 
 let nextConfig = {
   images: {
@@ -19,6 +20,7 @@ let nextConfig = {
     config.module.rules.push({
       test: /\.md$/,
       use: 'raw-loader',
+      type:'asset/source'
     });
 
     return config;

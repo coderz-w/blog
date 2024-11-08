@@ -3,6 +3,7 @@ import React from 'react';
 import AnimatedPostItem from './AnimatedPostItem';
 
 import { NormalContainer } from '@/components/layout/container/Normal';
+import { buildPostData } from '@/core';
 
 // 假数据
 const mockData = [
@@ -16,6 +17,8 @@ const mockData = [
 ];
 
 const ArticleList: React.FC = () => {
+  console.log(buildPostData());
+
   return (
     <NormalContainer>
       <ul>
