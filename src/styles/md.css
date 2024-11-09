@@ -144,6 +144,6 @@
   color: var(--accent-color) !important;
 }
 
-.prose :where(ul > li):not(:where([class~="not-prose"],[class~="not-prose"] *))::marker {
+.prose :where(ul > li):not(:where([class~='not-prose'], [class~='not-prose'] *))::marker {
   color: var(--accent-color) !important;
 }
