@@ -2,7 +2,7 @@
 
 import { LayoutGroup, m, useMotionTemplate, useMotionValue } from 'framer-motion';
 import React, { memo } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useParams } from 'next/navigation';
 import Link from 'next/link';
 
 import { MenuPopover } from './MenuPopover';
@@ -17,6 +17,9 @@ import {
 import { cn } from '@/lib/helper';
 
 export const HeaderCenterContent = () => {
+  const params = useParams();
+  if (params.nid) return null;
+
   return (
     <LayoutGroup>
       <AnimatedMenu>

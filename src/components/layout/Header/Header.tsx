@@ -6,8 +6,12 @@ import { HeaderCenterArea, HeaderLeftButtonArea, HeaderLogoArea } from './Header
 import { HeaderCenterContent } from './HeaderCenterContent';
 import { AnimatedLogo } from './AnimatedLogo';
 import styles from './header.module.css';
+import { HeaderMeta } from './HeaderMeta';
 
 import { cn } from '@/lib/helper';
+import { buildPostData } from '@/core';
+
+const { postDataMap } = buildPostData();
 
 const Header = () => {
   return (
@@ -23,11 +27,15 @@ const Header = () => {
 
         <HeaderLogoArea>
           <AnimatedLogo />
+
+          <div className="block lg:hidden">
+            <HeaderMeta postDataMap={postDataMap} />
+          </div>
         </HeaderLogoArea>
         <div className=" sr-only"></div>
         <HeaderCenterArea>
           <HeaderCenterContent />
-          {/* TODO 文章页面时显示一些文章信息 */}
+          <HeaderMeta postDataMap={postDataMap} />
         </HeaderCenterArea>
 
         {/* <div className="flex size-full [grid-area:right] items-center"></div> */}
