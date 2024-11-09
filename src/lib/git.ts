@@ -19,8 +19,9 @@ export function getLastGitUpdateTime(filePath: string): Date | null {
 
 export function getFirstGitCommitTime(filePath: string): Date | null {
   try {
-    const command = `git log --reverse -1 --format="%ai" -- "${filePath}"`;
+    const command = `git log --reverse --format="%ai" -- "${filePath}"`;
     const stdout = execSync(command).toString().trim();
+    console.log(stdout);
 
     if (!stdout) {
       return null;
@@ -28,7 +29,7 @@ export function getFirstGitCommitTime(filePath: string): Date | null {
 
     return new Date(stdout);
   } catch (error) {
-    console.error('Error fetching git first commit time:', error);
+    console.error('Error fetching git commit time:', error);
 
     return null;
   }
