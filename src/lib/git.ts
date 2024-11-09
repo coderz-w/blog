@@ -20,8 +20,7 @@ export function getLastGitUpdateTime(filePath: string): Date | null {
 export function getFirstGitCommitTime(filePath: string): Date | null {
   try {
     const command = `git log --reverse --format="%ai" -- "${filePath}"`;
-    const stdout = execSync(command).toString().trim();
-    console.log(stdout);
+    const stdout = getFirstLine(execSync(command).toString().trim());
 
     if (!stdout) {
       return null;
@@ -33,4 +32,12 @@ export function getFirstGitCommitTime(filePath: string): Date | null {
 
     return null;
   }
+}
+
+function getFirstLine(str: string) {
+  if (!str) return '';
+
+  const lines = str.split('\n');
+
+  return lines[0];
 }

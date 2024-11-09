@@ -8,13 +8,11 @@ export const CodeBlockRender = (props: {
   content: string;
   attrs?: string;
 }) => {
-  // 使用 useMemo 缓存生成的内容
   const Content = useMemo(() => {
     const { lang } = props;
     const nextProps = { ...props };
     nextProps.content = formatCode(props.content);
 
-    // 动态加载 shiki 高亮
     if (lang) {
       const ShikiHighLighter: any = lazy(() =>
         import('./ShikiHighlighter').then((mod) => ({

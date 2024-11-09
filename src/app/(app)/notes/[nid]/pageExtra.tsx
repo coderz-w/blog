@@ -34,11 +34,9 @@ export const NoteDateMeta = ({
   return (
     <span className="inline-flex items-center space-x-1">
       <MdiClockOutline />
-      <time className=" font-semibold text-base font-mono">
-        {createdAt && !modified
-          ? dayjs(createdAt).format('YYYY 年 M 月 D 日')
-          : '1999 年 9 月 9 日'}
-        {modified && <>编辑于&nbsp;&nbsp; {dayjs(updatedAt).format('YYYY 年 M 月 D 日')}</>}
+      <time className=" font-semibold text-sm font-mono">
+        {createdAt && dayjs(createdAt).format('YYYY 年 M 月 D 日')}
+        {modified && <>&nbsp;&nbsp;编辑于 {dayjs(updatedAt).format('YYYY 年 M 月 D 日')}</>}
       </time>
     </span>
   );

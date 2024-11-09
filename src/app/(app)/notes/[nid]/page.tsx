@@ -21,7 +21,6 @@ export type PageInnerProps = { postData: PostItemType };
 export default async function Page({ params }: { params: Record<string, any> }) {
   const { nid } = params;
   const postData = postDataMap[nid];
-  console.log(postData);
 
   return (
     <PageTransition>
