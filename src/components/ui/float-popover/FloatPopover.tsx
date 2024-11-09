@@ -192,14 +192,14 @@ const RealFloatPopover = function FloatPopover<T extends {}>(props: FloatPopover
       ref: refs.setReference,
     })
   ) : (
-    <div
+    <span
       role={trigger === 'both' || trigger === 'click' ? 'button' : 'note'}
       className={cn('inline-block', wrapperClassNames)}
       ref={refs.setReference}
       {...listener}
     >
       {Child}
-    </div>
+    </span>
   );
 
   useEffect(() => {

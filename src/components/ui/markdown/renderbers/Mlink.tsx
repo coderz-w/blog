@@ -5,7 +5,6 @@ import type { FC, ReactNode } from 'react';
 import { memo, useCallback } from 'react';
 
 import { FloatPopover } from '@/components/ui/float-popover';
-
 export const MLink: FC<{
   href: string;
   title?: string;
