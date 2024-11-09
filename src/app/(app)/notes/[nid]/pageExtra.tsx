@@ -4,16 +4,13 @@ import React, { PropsWithChildren, useEffect, useRef } from 'react';
 import { m } from 'framer-motion';
 import { useShallow } from 'zustand/react/shallow';
 
-import text from './test.md';
-
+import dayjs from '@/lib/dayjs';
 import { MdiClockOutline } from '@/components/icons/clock';
 import { cn } from '@/lib/helper';
 import { MainMarkdown } from '@/components/ui/markdown';
 import { useMainArticleStore } from '@/store/mainArticleStore';
 
-export const NoteTitle = () => {
-  const title = '我的一篇文章';
-
+export const NoteTitle = ({ title }: { title: string }) => {
   if (!title) return null;
 
   return (
@@ -25,11 +22,24 @@ export const NoteTitle = () => {
   );
 };
 
-export const NoteDateMeta = () => {
+export const NoteDateMeta = ({
+  createdAt,
+  updatedAt,
+  modified,
+}: {
+  createdAt: Date;
+  updatedAt: Date;
+  modified: boolean;
+}) => {
   return (
     <span className="inline-flex items-center space-x-1">
       <MdiClockOutline />
-      <time className="font-medium font-mono">2024年10月27日 星期日</time>
+      <time className=" font-semibold text-base font-mono">
+        {createdAt && !modified
+          ? dayjs(createdAt).format('YYYY 年 M 月 D 日')
+          : '1999 年 9 月 9 日'}
+        {modified && <>编辑于&nbsp;&nbsp; {dayjs(updatedAt).format('YYYY 年 M 月 D 日')}</>}
+      </time>
     </span>
   );
 };
@@ -50,7 +60,7 @@ const MarkdownRenderers: Record<string, any> = {
   },
 };
 
-export const NoteMarkdown = () => {
+export const NoteMarkdown = ({ text }: { text: string }) => {
   return <MainMarkdown className="mt-10" allowsScript renderers={MarkdownRenderers} value={text} />;
 };
 

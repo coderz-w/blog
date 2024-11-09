@@ -21,7 +21,6 @@ import { useStateToRef } from '@/hooks/common/use-state-ref';
 import { cn } from '@/lib/helper';
 import { springScrollToElement } from '@/lib/scroller';
 
-// 使用 `useState` 来管理本地的 activeId 状态
 function useActiveId($headings: HTMLHeadingElement[]) {
   const [activeId, setActiveId] = useState<string | null>(null);
 
@@ -75,9 +74,6 @@ export const TocTree = ({
     return Array.from($headings).map((el, idx) => {
       const depth = +el.tagName.slice(1);
       const elClone = el.cloneNode(true) as HTMLElement;
-      elClone.querySelectorAll('del, .katex-container').forEach((del) => {
-        del.remove();
-      });
 
       const title = elClone.textContent || '';
       const index = idx;

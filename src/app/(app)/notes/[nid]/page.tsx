@@ -9,33 +9,43 @@ import {
   PageTransition,
 } from './pageExtra';
 
+import { type PostItem as PostItemType, buildPostData } from '@/core';
 import { LayoutRightSidePortal } from '@/providers/shared/LayoutRightSideProvider';
 import { ArticleRightAside } from '@/components/modules/shared/ArticleRightAside';
 import { Signature } from '@/components/modules/shared/signature';
 
+const { postDataMap } = buildPostData();
+
+export type PageInnerProps = { postData: PostItemType };
+
 export default async function Page({ params }: { params: Record<string, any> }) {
   const { nid } = params;
-  console.log('id', nid);
+  const postData = postDataMap[nid];
+  console.log(postData);
 
   return (
     <PageTransition>
       <PaperLayout>
-        <PageInner />
+        <PageInner postData={postData} />
       </PaperLayout>
     </PageTransition>
   );
 }
 
-const PageInner = () => (
+const PageInner = ({ postData }: PageInnerProps) => (
   <>
     <div>
-      <NoteTitle />
+      <NoteTitle title={postData.title} />
       <span className="flex flex-wrap items-center text-sm text-neutral-content/60">
-        <NoteDateMeta />
+        <NoteDateMeta
+          createdAt={postData.createdAt!}
+          updatedAt={postData.updatedAt!}
+          modified={postData.modified}
+        />
       </span>
     </div>
     <IndentArticleContainer>
-      <NoteMarkdown />
+      <NoteMarkdown text={postData.text} />
       <div className="signature-animated my-2 flex w-full justify-end" data-hide-print="true">
         <Signature />
       </div>
