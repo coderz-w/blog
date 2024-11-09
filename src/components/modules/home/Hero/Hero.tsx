@@ -9,47 +9,13 @@ import { SocialIcon } from '../SocialIcon';
 import { TextUpTransitionView } from '@/components/ui/transition/TextUpTransitionView';
 import { cn } from '@/lib/helper';
 import { TwoColumnLayout } from '@/components/layout/TwoColumnLayout';
+import { heroDesc, heroOwnerInfo, heroTitle } from '~/about';
 
 export const Hero = () => {
-  const title = {
-    template: [
-      { type: 'h1', text: `Hi, I'm `, class: ' font-light text-4xl font-900 inline-block' },
-      { type: 'h1', text: `zw`, class: ' text-4xl font-bold inline-block' },
-      {
-        type: 'h1',
-        text: `👋`,
-        class:
-          ' font-light text-4xl font-bold inline-block hover:scale-[1.05] cursor-pointer origin-center transition-all',
-      },
-      { type: 'h1', text: ` `, class: ' h-0 w-0 scale-0' },
-      {
-        type: 'span',
-        text: 'A NodeJS Full Stack ',
-        class: 'font-light text-4xl font-900 inline-block mt-[5px]',
-      },
-      {
-        type: 'code',
-        text: '<Developer />',
-        class:
-          ' inline-block font-medium mx-2 text-3xl rounded p-2 bg-gray-200 dark:bg-gray-800/0 hover:dark:bg-gray-800/100 bg-opacity-0 hover:bg-opacity-100 transition-background duration-200"><div><span class="inline-block whitespace-pre',
-      },
-    ],
-  };
-
-  const description = 'An independent developer coding with love.';
-
-  const siteOwner = {
-    avatar: '/image/owner.jpg',
-    socialIds: {
-      github: 'https://github.com/yangxuanxuan1998',
-      twitter: 'https://twitter.com/yangxuanxuan1998',
-    },
-  };
-
-  const { avatar, socialIds } = siteOwner;
+  const { avatar, socialIds } = heroOwnerInfo;
 
   const titleAnimateD =
-    title.template.reduce((acc, cur) => {
+    heroTitle.template.reduce((acc, cur) => {
       return acc + (cur.text?.length || 0);
     }, 0) * 50;
 
@@ -63,10 +29,10 @@ export const Hero = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ type: 'spring', damping: 10, stiffness: 100 }}
           >
-            {title.template.map((t, i) => {
+            {heroTitle.template.map((t, i) => {
               const { type, text, class: className } = t;
 
-              const prevAllTextLength = title.template.slice(0, i).reduce((acc, cur) => {
+              const prevAllTextLength = heroTitle.template.slice(0, i).reduce((acc, cur) => {
                 return acc + (cur.text?.length || 0);
               }, 0);
 
@@ -93,7 +59,7 @@ export const Hero = () => {
             }}
             className="my-3 text-center lg:text-left lg:ml-24"
           >
-            <span className=" opacity-70"> {description}</span>
+            <span className=" opacity-70"> {heroDesc}</span>
           </m.div>
 
           <ul className="center mx-[60px] mt-8 flex flex-wrap gap-6 lg:mx-auto lg:mt-24 lg:justify-start lg:gap-4 lg:ml-24">

@@ -79,12 +79,19 @@ export const SocialIcon = memo((props: SocialIconProps) => {
       type="tooltip"
       triggerElement={
         <MotionButtonBase
+          aria-label={`${name}-icon`}
           className="center flex aspect-square size-10 rounded-full text-2xl text-white"
           style={{
             background: iconBg,
           }}
         >
-          <a target="_blank" href={href} className="center flex" rel="noreferrer">
+          <a
+            target="_blank"
+            aria-label={`${name}-link`}
+            href={href}
+            className="center flex"
+            rel="noreferrer"
+          >
             {Icon}
           </a>
         </MotionButtonBase>
