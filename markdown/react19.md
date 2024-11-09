@@ -1,4 +1,4 @@
-# React19
+# React19qqqq
 
 4月25日，React官方宣布React19在NPM上推出，可以先行下载使用。
 正好此博客也是NextJS搭建的，尝试一下React19带来哪些变化。

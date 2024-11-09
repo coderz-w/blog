@@ -31,10 +31,8 @@ const animationProps = {
 export const HeaderMeta = ({ postDataMap }: { postDataMap: PostMap }) => {
   const params = useParams();
   const postId = params.nid as string;
-  console.log(postId);
 
   const postData = postDataMap[postId];
-  console.log(postData);
 
   return (
     <AnimatePresence>
