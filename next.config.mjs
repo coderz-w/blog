@@ -24,6 +24,7 @@ let nextConfig = {
 
     return config;
   },
+  productionBrowserSourceMaps: true,
 };
 
 if (process.env.ANALYZE === 'true') {

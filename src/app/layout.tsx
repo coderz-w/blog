@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     siteName: 'zhw blog',
     locale: 'zh_CN',
     type: 'website',
-    url: 'http://localhost:3000',
+    url: 'https://blog-rbtb.vercel.app/',
   }, //分享到其他媒体
 };
 

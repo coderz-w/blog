@@ -36,6 +36,7 @@ export const MHeader = (props: HeadingProps) => {
           className="center ml-2 inline-flex cursor-pointer select-none text-accent opacity-0 transition-opacity duration-200 group-hover:opacity-100"
           role="button"
           tabIndex={0}
+          aria-label="Scroll to heading"
           onClick={() => {
             const { state } = history;
             history.replaceState(state, '', `#${nextId}`);

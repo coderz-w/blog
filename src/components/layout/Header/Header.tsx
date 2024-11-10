@@ -7,6 +7,7 @@ import { HeaderCenterContent } from './HeaderCenterContent';
 import { AnimatedLogo } from './AnimatedLogo';
 import styles from './header.module.css';
 import { HeaderMeta } from './HeaderMeta';
+import { HeaderDrawerButton } from './HeaderDrawerButton';
 
 import { cn } from '@/lib/helper';
 import { buildPostData } from '@/core';
@@ -23,7 +24,9 @@ const Header = () => {
           styles['header--grid'],
         )}
       >
-        <HeaderLeftButtonArea>小菜单</HeaderLeftButtonArea>
+        <HeaderLeftButtonArea>
+          <HeaderDrawerButton />
+        </HeaderLeftButtonArea>
 
         <HeaderLogoArea>
           <AnimatedLogo />
