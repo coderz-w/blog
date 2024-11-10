@@ -35,6 +35,12 @@ export const metadata: Metadata = {
       default: seo.title,
       template: '%s | zhw',
     },
+    images: [
+      {
+        url: '/api/og',
+        alt: 'zhw blog',
+      },
+    ],
     description: seo.description,
     siteName: 'zhw blog',
     locale: 'zh_CN',

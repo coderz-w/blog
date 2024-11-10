@@ -27,10 +27,6 @@ export const generateMetadata = async ({ params }: { params: any }): Promise<Met
     const postData = postDataMap[nid];
     const { title, summary } = postData;
 
-    const ogParams = new URLSearchParams();
-    ogParams.set('title', postData.title);
-    ogParams.set('tag', postData.tag);
-
     return {
       authors: postData.authors?.map((author) => ({
         name: author,
@@ -47,7 +43,7 @@ export const generateMetadata = async ({ params }: { params: any }): Promise<Met
         url: `/notes/${nid}`,
         images: [
           {
-            url: `/api/og?${ogParams.toString()}`,
+            url: `/api/og?title=${postData.title}&tag=${postData.tag}`,
             alt: postData.title,
           },
         ],
