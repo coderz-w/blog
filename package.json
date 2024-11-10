@@ -45,6 +45,7 @@
     "tailwind-variants": "^0.2.1",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-animated": "^1.1.2",
+    "uniqolor": "^1.1.1",
     "vaul": "^1.1.1",
     "zustand": "^5.0.0"
   },
