@@ -1,5 +1,5 @@
 export const seo = {
-  title: 'zhw | fe',
+  title: 'home | zhw',
   description: '我是zhw,欢迎来到我的博客',
   url: new URL(
     process.env.NODE_ENV === 'production'

@@ -16,6 +16,7 @@ export type PostItem = {
   createdAt: Date | null;
   modified: boolean;
   coverImage: string;
+  summary?: string;
 };
 
 export type PostJsonType = {
@@ -23,6 +24,7 @@ export type PostJsonType = {
   title: string;
   tag: string;
   coverImage: string;
+  summary?: string;
 };
 export type PostMap = Record<string, PostItem>;
 
@@ -44,6 +46,7 @@ export function buildPostData() {
     itemInfo.tag = item.tag;
     itemInfo.path = item.path.replace('.md', '');
     itemInfo.rawFilePath = `./${item.path}`;
+    itemInfo.summary = item.summary;
     itemInfo.coverImage = item.coverImage.startsWith('http')
       ? item.coverImage
       : `/postCoverImage/${item.coverImage}`;

@@ -1,5 +1,7 @@
 'use server';
 
+import { Metadata } from 'next';
+
 import {
   NoteTitle,
   NoteDateMeta,
@@ -17,6 +19,22 @@ import { Signature } from '@/components/modules/shared/signature';
 const { postDataMap } = buildPostData();
 
 export type PageInnerProps = { postData: PostItemType };
+
+export const generateMetadata = async ({ params }: { params: any }): Promise<Metadata> => {
+  try {
+    const { nid } = params;
+
+    const postData = postDataMap[nid];
+    const { title, summary } = postData;
+
+    return {
+      title: { absolute: title },
+      description: summary,
+    } satisfies Metadata;
+  } catch {
+    return {};
+  }
+};
 
 export default async function Page({ params }: { params: Record<string, any> }) {
   const { nid } = params;
