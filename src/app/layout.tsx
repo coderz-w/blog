@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     locale: 'zh_CN',
     type: 'website',
     url: 'https://blog-rbtb.vercel.app/',
-  }, //分享到其他媒体
+  },
 };
 
 export const viewport: Viewport = {
