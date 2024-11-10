@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og';
 import { ImageResponseOptions, NextRequest } from 'next/server';
+import uniqolor from 'uniqolor';
 
 import { seo } from '~/index';
 import { buildPostData } from '@/core';
