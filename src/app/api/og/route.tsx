@@ -3,11 +3,8 @@ import { ImageResponseOptions, NextRequest } from 'next/server';
 import uniqolor from 'uniqolor';
 
 import { seo } from '~/index';
-import { buildPostData } from '@/core';
 
 export const runtime = 'edge';
-
-const { postDataMap } = buildPostData();
 
 const resOptions = {
   width: 1200,
@@ -18,7 +15,8 @@ const resOptions = {
     ['cdn-cache-control', 'max-age=3600, stale-while-revalidate=600'],
   ]),
 } as ImageResponseOptions;
-const HomeOGImage = () => {
+
+const HomeOGImage = ({ img }: { img: ArrayBuffer }) => {
   const seed = Math.random().toString(36).substring(7);
   const bgAccent = uniqolor(seed, {
     saturation: [30, 35],
@@ -41,25 +39,21 @@ const HomeOGImage = () => {
         display: 'flex',
         height: '100%',
         width: '100%',
-
         background: `linear-gradient(37deg, ${bgAccent} 27.82%, ${bgAccentLight} 79.68%, ${bgAccentUltraLight} 100%)`,
-
         fontFamily: 'Noto Sans, Inter, "Material Icons"',
-
         padding: '80px 15rem',
         alignItems: 'center',
         justifyContent: 'space-between',
       }}
     >
       <img
-        src="/image/owner.jpg"
+        src={img as unknown as any}
         style={{
           borderRadius: '50%',
         }}
         height={256}
         width={256}
       />
-
       <div
         style={{
           display: 'flex',
@@ -97,36 +91,31 @@ const HomeOGImage = () => {
 };
 
 export const GET = async (req: NextRequest) => {
+  const imageData = await fetch(
+    new URL('../../../../public/image/owner.jpg', import.meta.url),
+  ).then((res) => res.arrayBuffer());
+
   try {
     const { searchParams } = req.nextUrl;
 
-    const dataString = searchParams.get('nid') as string;
+    const title = searchParams.get('title');
+    const tag = searchParams.get('tag');
 
-    if (!dataString) {
-      return new ImageResponse(<HomeOGImage />, resOptions);
+    if (!title || !tag) {
+      return new ImageResponse(<HomeOGImage img={imageData} />, resOptions);
     }
 
-    try {
-      if (!(dataString in postDataMap)) {
-        throw new Error('No such post');
-      }
-    } catch {
-      return new Response('Failed to parse the data.', { status: 400 });
-    }
-
-    const postName = postDataMap[dataString].title;
-
-    const bgAccent = uniqolor(postName, {
+    const bgAccent = uniqolor(title, {
       saturation: [30, 35],
       lightness: [60, 70],
     }).color;
 
-    const bgAccentLight = uniqolor(postName, {
+    const bgAccentLight = uniqolor(title, {
       saturation: [30, 35],
       lightness: [80, 90],
     }).color;
 
-    const bgAccentUltraLight = uniqolor(postName, {
+    const bgAccentUltraLight = uniqolor(title, {
       saturation: [30, 35],
       lightness: [95, 96],
     }).color;
@@ -138,11 +127,8 @@ export const GET = async (req: NextRequest) => {
             display: 'flex',
             height: '100%',
             width: '100%',
-
             background: `linear-gradient(37deg, ${bgAccent} 27.82%, ${bgAccentLight} 79.68%, ${bgAccentUltraLight} 100%)`,
-
             fontFamily: 'Inter, Noto Sans, Inter, "Material Icons"',
-
             padding: '80px',
             alignItems: 'flex-end',
             justifyContent: 'flex-end',
@@ -151,7 +137,6 @@ export const GET = async (req: NextRequest) => {
           <div
             style={{
               display: 'flex',
-
               position: 'absolute',
               left: '5rem',
               top: '5rem',
@@ -160,23 +145,13 @@ export const GET = async (req: NextRequest) => {
             }}
           >
             <img
-              src="/image/owner.jpg"
+              src={imageData as unknown as any}
               style={{
                 borderRadius: '50%',
               }}
               height={128}
               width={128}
             />
-
-            <span
-              style={{
-                marginLeft: '3rem',
-                color: '#ffffff99',
-                fontSize: '2rem',
-              }}
-            >
-              <h3>{seo.ogTitle}</h3>
-            </span>
           </div>
           <div
             style={{
@@ -187,7 +162,7 @@ export const GET = async (req: NextRequest) => {
               textAlign: 'right',
             }}
           >
-            <h1
+            <h2
               style={{
                 color: 'rgba(255, 255, 255, 0.92)',
                 fontSize: '50px',
@@ -196,9 +171,20 @@ export const GET = async (req: NextRequest) => {
                 fontWeight: 'bold',
               }}
             >
-              {postName}
-            </h1>
+              {title}
+            </h2>
             <h2
+              style={{
+                color: 'rgba(255, 255, 255, 0.92)',
+                fontSize: '42px',
+                overflow: 'hidden',
+                maxHeight: '150px',
+                fontWeight: 'bold',
+              }}
+            >
+              {tag}
+            </h2>
+            <h3
               style={{
                 color: 'rgba(255, 255, 255, 0.85)',
                 fontSize: '38px',
@@ -206,7 +192,7 @@ export const GET = async (req: NextRequest) => {
               }}
             >
               {seo.word}
-            </h2>
+            </h3>
           </div>
         </div>
       ),

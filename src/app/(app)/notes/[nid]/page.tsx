@@ -27,9 +27,31 @@ export const generateMetadata = async ({ params }: { params: any }): Promise<Met
     const postData = postDataMap[nid];
     const { title, summary } = postData;
 
+    const ogParams = new URLSearchParams();
+    ogParams.set('title', postData.title);
+    ogParams.set('tag', postData.tag);
+
     return {
+      authors: postData.authors?.map((author) => ({
+        name: author,
+      })),
+
       title: { absolute: title },
       description: summary,
+      alternates: { canonical: `/notes/${nid}` },
+      openGraph: {
+        authors: postData.authors,
+        title: postData.title,
+        description: postData.summary,
+        type: 'article',
+        url: `/notes/${nid}`,
+        images: [
+          {
+            url: `/api/og?${ogParams.toString()}`,
+            alt: postData.title,
+          },
+        ],
+      },
     } satisfies Metadata;
   } catch {
     return {};

@@ -5,6 +5,7 @@ import { symbolsTime, symbolsCount } from '@/lib/count';
 import { getFirstGitCommitTime, getLastGitUpdateTime } from '@/lib/git';
 
 export type PostItem = {
+  authors: string[];
   path: string;
   rawFilePath: string;
   text: string;
@@ -20,6 +21,7 @@ export type PostItem = {
 };
 
 export type PostJsonType = {
+  authors: string[];
   path: string;
   title: string;
   tag: string;
@@ -42,6 +44,7 @@ export function buildPostData() {
   function processPostItem(item: PostJsonType) {
     const itemInfo = {} as PostItem;
     const file = importMarkdownFile(`./${item.path}`);
+    itemInfo.authors = item.authors;
     itemInfo.title = item.title;
     itemInfo.tag = item.tag;
     itemInfo.path = item.path.replace('.md', '');

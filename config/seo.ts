@@ -9,3 +9,7 @@ export const seo = {
       : 'http://localhost:3000',
   ),
 } as const;
+
+export const siteUrl = new URL(
+  process.env.NODE_ENV === 'production' ? 'https://blog-rbtb.vercel.app/' : 'http://localhost:3000',
+);
