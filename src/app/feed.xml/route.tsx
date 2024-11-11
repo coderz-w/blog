@@ -1,6 +1,5 @@
 import RSS from 'rss';
 import { compiler } from 'markdown-to-jsx';
-import { renderToString } from 'react-dom/server';
 
 import { siteUrl } from '~/seo';
 import { buildPostData } from '@/core';
@@ -8,6 +7,8 @@ import { buildPostData } from '@/core';
 const { postDataList } = buildPostData();
 
 export async function GET() {
+  const ReactDOM = (await import('react-dom/server')).default;
+
   const feed = new RSS({
     title: 'zhw blog',
     description: '记录我的生活',
@@ -21,7 +22,7 @@ export async function GET() {
   postDataList.forEach((post) => {
     const render = () => {
       try {
-        return renderToString(
+        return ReactDOM.renderToString(
           <div>
             {compiler(post.text, {
               overrides: {
@@ -56,7 +57,7 @@ export async function GET() {
           </div>,
         );
       } catch {
-        return renderToString(
+        return ReactDOM.renderToString(
           <p>
             当前内容无法在 RSS 阅读器中正确渲染，请前往：
             <a href={`${siteUrl}/notes/${post.title}`}>{`${siteUrl}/notes/${post.title}`}</a>
