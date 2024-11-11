@@ -1,6 +1,5 @@
 import type { PropsWithChildren } from 'react';
-
-// import { ClientOnly } from '~/components/common/ClientOnly';
+import { Analytics } from '@vercel/analytics/react';
 
 import Content from '../Content';
 import Footer from '../Footer';
@@ -12,9 +11,7 @@ const Root = ({ children }: PropsWithChildren) => {
       <Header />
       <Content>{children}</Content>
       <Footer />
-      {/* <ClientOnly>
-        <FABContainer />
-      </ClientOnly> */}
+      <Analytics />,
     </>
   );
 };
