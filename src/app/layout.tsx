@@ -8,9 +8,16 @@ import AccentColorStyleInjector from '@/components/modules/shared/AccentColorSty
 import Root from '@/components/layout/Root';
 import { seo } from '~/index';
 import { sansFont, serifFont } from '@/lib/fonts';
+import { siteUrl } from '~/seo';
 
 export const metadata: Metadata = {
   metadataBase: seo.url,
+  alternates: {
+    canonical: `${siteUrl}`,
+    types: {
+      'application/rss+xml': [{ url: 'feed.xml', title: 'RSS 订阅' }],
+    },
+  },
   title: {
     template: seo.template,
     default: seo.title,

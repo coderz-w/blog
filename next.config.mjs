@@ -24,6 +24,22 @@ let nextConfig = {
 
     return config;
   },
+  async rewrites() {
+    return [
+      {
+        source: '/rss',
+        destination: '/feed.xml',
+      },
+      {
+        source: '/rss.xml',
+        destination: '/feed.xml',
+      },
+      {
+        source: '/feed',
+        destination: '/feed.xml',
+      },
+    ]
+  },
   productionBrowserSourceMaps: true,
 };
 
