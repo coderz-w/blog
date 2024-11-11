@@ -29,7 +29,7 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  }, //爬虫
+  },
   openGraph: {
     title: {
       default: seo.title,
