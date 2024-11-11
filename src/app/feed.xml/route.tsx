@@ -1,7 +1,7 @@
 import RSS from 'rss';
 import { compiler } from 'markdown-to-jsx';
 
-import { siteUrl } from '~/seo';
+import { siteUrl, seo } from '~/seo';
 import { buildPostData } from '@/core';
 
 const { postDataList } = buildPostData();
@@ -10,7 +10,7 @@ export async function GET() {
   const ReactDOM = (await import('react-dom/server')).default;
 
   const feed = new RSS({
-    title: 'zhw blog',
+    title: seo.title,
     description: '记录我的生活',
     site_url: siteUrl.toString(),
     feed_url: `${siteUrl}/feed.xml`,

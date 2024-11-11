@@ -26,7 +26,6 @@ export const metadata: Metadata = {
   keywords: seo.keywords,
   verification: { google: seo.googleVerification },
   icons: [{ rel: 'icon', url: '/favicon.ico' }],
-  // manifest: '/site.webmanifest', //pwa
   robots: {
     index: true,
     follow: true,
@@ -40,20 +39,20 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: {
-      default: seo.title,
-      template: '%s | zhw',
+      default: seo.ogTitle,
+      template: seo.template,
     },
     images: [
       {
         url: '/api/og',
-        alt: 'zhw blog',
+        alt: seo.title,
       },
     ],
     description: seo.description,
-    siteName: 'zhw blog',
+    siteName: seo.title,
     locale: 'zh_CN',
     type: 'website',
-    url: 'https://blog-rbtb.vercel.app/',
+    url: siteUrl,
   },
 };
 
