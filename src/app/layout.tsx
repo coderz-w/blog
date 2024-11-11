@@ -12,11 +12,12 @@ import { sansFont, serifFont } from '@/lib/fonts';
 export const metadata: Metadata = {
   metadataBase: seo.url,
   title: {
-    template: '%s | zhw',
+    template: seo.template,
     default: seo.title,
   },
   description: seo.description,
-  keywords: 'zhw blog',
+  keywords: seo.keywords,
+  verification: { google: seo.googleVerification },
   icons: [{ rel: 'icon', url: '/favicon.ico' }],
   // manifest: '/site.webmanifest', //pwa
   robots: {
