@@ -38,7 +38,7 @@ let nextConfig = {
         source: '/feed',
         destination: '/feed.xml',
       },
-    ]
+    ];
   },
   productionBrowserSourceMaps: true,
 };

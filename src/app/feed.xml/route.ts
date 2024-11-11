@@ -25,6 +25,7 @@ export async function GET() {
       date: post.createdAt!,
       enclosure: {
         url: post.coverImage,
+        type: 'image/jpeg',
       },
     });
   });
