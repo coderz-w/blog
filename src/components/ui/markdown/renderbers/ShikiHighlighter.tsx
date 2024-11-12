@@ -1,7 +1,5 @@
-'use server';
-
+import { useEffect, useState } from 'react';
 import { createHighlighter, Highlighter } from 'shiki';
-import { FC } from 'react';
 
 interface ShikiHighlighterProps {
   lang: string;
@@ -21,30 +19,36 @@ const allowLanguages = [
   'typescript',
 ];
 
-let highlighter: Highlighter | null = null;
+export const ShikiHighlighter: React.FC<ShikiHighlighterProps> = ({ lang, content }) => {
+  const [highlightedCode, setHighlightedCode] = useState<string | null>(null);
 
-// 初始化 Shiki highlighter
-const getHighlighter = async () => {
-  if (!highlighter) {
-    highlighter = await createHighlighter({
-      themes: ['min-light', 'nord'],
-      langs: [...allowLanguages],
-    });
-  }
+  useEffect(() => {
+    let highlighter: Highlighter;
 
-  return highlighter;
-};
+    const loadHighlighter = async () => {
+      highlighter = await createHighlighter({
+        themes: ['min-light', 'nord'],
+        langs: [...allowLanguages],
+      });
 
-export const ShikiHighlighter: FC<ShikiHighlighterProps> = async ({ lang, content }) => {
-  const highlighter = await getHighlighter();
+      const code = highlighter.codeToHtml(content, {
+        lang: allowLanguages.includes(lang) ? lang : 'javascript',
+        themes: {
+          light: 'min-light',
+          dark: 'nord',
+        },
+      });
+      setHighlightedCode(code);
+    };
 
-  const highlightedCode = highlighter.codeToHtml(content, {
-    lang: allowLanguages.includes(lang) ? lang : 'javascript',
-    themes: {
-      light: 'min-light',
-      dark: 'nord',
-    },
-  });
+    loadHighlighter();
 
-  return <div className="code-card" dangerouslySetInnerHTML={{ __html: highlightedCode }} />;
+    return () => {
+      highlighter = null as any;
+    };
+  }, [lang, content]);
+
+  return highlightedCode ? (
+    <div className="code-card" dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+  ) : null;
 };
