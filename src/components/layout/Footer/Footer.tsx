@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { PrefetchLink } from '@/components/modules/shared/PrefetchLink';
 import ThemeSwitcher from '@/components/ui/ThemeSwitcher';
 
 const Footer = () => {
@@ -12,11 +13,11 @@ const Footer = () => {
         <div className="relative mx-auto max-w-7xl lg:px-8 h-full flex flex-row items-center justify-around">
           <div className=" flex items-center gap-x-4 font-mono">
             <span className="">
-              <Link href={'/'}>
+              <PrefetchLink href={'/'}>
                 <span className=" relative before:content-[''] before:absolute before:bottom-[-2px] before:w-[0px] hover:before:w-[100%] before:h-[1px] before:bg-[var(--accent-color)] before:transition-all before:duration-300">
                   关于我
                 </span>
-              </Link>
+              </PrefetchLink>
             </span>
             <span className="">
               <Link href={'/'}>

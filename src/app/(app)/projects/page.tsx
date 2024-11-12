@@ -1,11 +1,11 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
 
 import { GitHubBrandIcon } from '@/components/icons/platform/GitHubBrandIcon';
 import { cn } from '@/lib/helper';
 import { ProjectModel, projectList } from '~/index';
+import { PrefetchLink } from '@/components/modules/shared/PrefetchLink';
 
 export default function Projects() {
   return (
@@ -41,7 +41,7 @@ const ProjectCardList = ({ data }: { data: ProjectModel[] }) => (
 );
 const ProjectCard = ({ project }: { project: ProjectModel }) => {
   return (
-    <Link
+    <PrefetchLink
       href={project.url}
       key={project.id}
       className="group flex shrink-0 grid-cols-[60px_2fr] flex-col items-center gap-4 md:grid"
@@ -59,7 +59,7 @@ const ProjectCard = ({ project }: { project: ProjectModel }) => {
           {project.desc}
         </span>
       </span>
-    </Link>
+    </PrefetchLink>
   );
 };
 

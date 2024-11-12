@@ -3,12 +3,12 @@
 import { LayoutGroup, m, useMotionTemplate, useMotionValue } from 'framer-motion';
 import React, { memo } from 'react';
 import { usePathname, useParams } from 'next/navigation';
-import Link from 'next/link';
 
 import { MenuPopover } from './MenuPopover';
 
 import { cn } from '@/lib/helper';
 import { IHeaderMenu, headerMenuConfig } from '~/router';
+import { PrefetchLink } from '@/components/modules/shared/PrefetchLink';
 
 export const HeaderCenterContent = () => {
   const params = useParams();
@@ -137,7 +137,7 @@ function AnimatedItem({
 }) {
   return (
     <div>
-      <Link
+      <PrefetchLink
         href={href}
         className={cn(
           'relative block whitespace-nowrap px-4 py-2 transition',
@@ -156,7 +156,7 @@ function AnimatedItem({
             layoutId="active-nav-item"
           />
         )}
-      </Link>
+      </PrefetchLink>
     </div>
   );
 }
