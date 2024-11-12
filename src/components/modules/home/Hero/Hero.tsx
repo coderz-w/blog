@@ -87,6 +87,7 @@ export const Hero = () => {
             width={300}
             src={avatar!}
             alt="Site Owner Avatar"
+            priority
             className={cn(
               'aspect-square rounded-full border border-slate-200 dark:border-neutral-800',
               'w-full',
