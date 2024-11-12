@@ -4,15 +4,15 @@ import { Metadata } from 'next';
 import AnimatedPostItem from './AnimatedPostItem';
 
 import { NormalContainer } from '@/components/layout/container/Normal';
-import { buildPostData } from '@/core';
+import { getPostData } from '@/core';
 
 export const metadata: Metadata = {
   title: '文稿',
   description: '文章列表',
 };
 
-const ArticleList: React.FC = () => {
-  const { postDataList } = buildPostData();
+const ArticleList: React.FC = async () => {
+  const { postDataList } = await getPostData();
 
   return (
     <NormalContainer>

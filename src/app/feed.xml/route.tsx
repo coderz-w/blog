@@ -2,9 +2,9 @@ import RSS from 'rss';
 import { compiler } from 'markdown-to-jsx';
 
 import { siteUrl, seo } from '~/seo';
-import { buildPostData } from '@/core';
+import { getPostData } from '@/core';
 
-const { postDataList } = buildPostData();
+const { postDataList } = await getPostData();
 
 export async function GET() {
   const ReactDOM = (await import('react-dom/server')).default;

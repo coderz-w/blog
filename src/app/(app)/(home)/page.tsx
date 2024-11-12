@@ -1,9 +1,9 @@
-import { buildPostData } from '@/core';
+import { getPostData } from '@/core';
 import { FocusCards } from '@/components/ui/focus-cards.tsx';
 import { Hero } from '@/components/modules/home/Hero';
 import { WindVane } from '@/components/modules/home/WindVane/WindVane';
 
-const { postDataList } = buildPostData();
+const { postDataList } = await getPostData();
 
 export default function Home() {
   return (

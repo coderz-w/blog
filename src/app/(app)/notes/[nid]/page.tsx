@@ -11,12 +11,12 @@ import {
   PageTransition,
 } from './pageExtra';
 
-import { type PostItem as PostItemType, buildPostData } from '@/core';
+import { type PostItem as PostItemType, getPostData } from '@/core';
 import { LayoutRightSidePortal } from '@/providers/shared/LayoutRightSideProvider';
 import { ArticleRightAside } from '@/components/modules/shared/ArticleRightAside';
 import { Signature } from '@/components/modules/shared/signature';
 
-const { postDataMap } = buildPostData();
+const { postDataMap } = await getPostData();
 
 export type PageInnerProps = { postData: PostItemType };
 

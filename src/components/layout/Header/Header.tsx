@@ -10,9 +10,9 @@ import { HeaderMeta } from './HeaderMeta';
 import { HeaderDrawerButton } from './HeaderDrawerButton';
 
 import { cn } from '@/lib/helper';
-import { buildPostData } from '@/core';
+import { getPostData } from '@/core';
 
-const { postDataMap } = buildPostData();
+const { postDataMap } = await getPostData();
 
 const Header = () => {
   return (

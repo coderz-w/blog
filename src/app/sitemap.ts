@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next';
 
 import { siteUrl } from '~/seo';
-import { buildPostData } from '@/core';
+import { getPostData } from '@/core';
 
-const { postDataList } = buildPostData();
+const { postDataList } = await getPostData();
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const postSitemap = postDataList.map((post) => ({
