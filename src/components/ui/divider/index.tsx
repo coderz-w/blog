@@ -28,9 +28,7 @@ export const DividerVertical: FC<
         className,
       )}
       {...rest}
-    >
-      w
-    </span>
+    ></span>
   );
 };
 

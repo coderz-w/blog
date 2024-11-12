@@ -11,7 +11,7 @@ import { useMainArticleStore } from '@/store/mainArticleStore';
 
 export type TocAsideProps = {
   treeClassName?: string;
-  accessory?: React.ReactNode | React.FC;
+  accessory?: React.ReactNode;
   as?: React.ElementType;
   className?: string;
 };
@@ -21,6 +21,7 @@ export const TocAside = ({
   children,
   treeClassName,
   as: As = 'aside',
+  accessory,
 }: TocAsideProps & PropsWithChildren) => {
   const containerRef = useRef<HTMLUListElement>(null);
   const $article = useMainArticleStore(useShallow((state) => state.Element));
@@ -62,6 +63,7 @@ export const TocAside = ({
         $headings={$headings}
         containerRef={containerRef}
         className={cn('absolute max-h-[75vh]', treeClassName)}
+        accessory={accessory}
       />
       {children}
     </As>

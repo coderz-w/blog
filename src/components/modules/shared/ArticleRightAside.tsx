@@ -2,6 +2,7 @@ import React from 'react';
 import { PropsWithChildren } from 'react';
 
 import { TocAside } from '../toc/TocAside';
+import { ReadIndicator } from './ReadIndicator';
 
 export const ArticleRightAside = ({ children }: PropsWithChildren) => {
   return (
@@ -11,6 +12,7 @@ export const ArticleRightAside = ({ children }: PropsWithChildren) => {
           as="div"
           className="static ml-4"
           treeClassName="absolute h-full min-h-[120px] flex flex-col"
+          accessory={<ReadIndicator />}
         />
       </div>
       {!!children &&
