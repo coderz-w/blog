@@ -25,6 +25,7 @@ export const generateMetadata = async ({ params }: { params: any }): Promise<Met
     const { nid } = params;
 
     const postData = postDataMap[nid];
+
     const { title, summary } = postData;
 
     return {
