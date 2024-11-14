@@ -1,9 +1,7 @@
 {
   "postDataMap": {
     "first": {
-      "authors": [
-        "zhw"
-      ],
+      "authors": ["zhw"],
       "title": "建站",
       "tag": "生活",
       "path": "first",
@@ -23,9 +21,7 @@
   },
   "postDataList": [
     {
-      "authors": [
-        "zhw"
-      ],
+      "authors": ["zhw"],
       "title": "建站",
       "tag": "生活",
       "path": "first",

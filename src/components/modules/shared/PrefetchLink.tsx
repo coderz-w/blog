@@ -8,7 +8,7 @@ const loadedImages = new Set<string>();
 
 interface PrefetchLinkProps extends React.ComponentProps<typeof Link> {
   href: string;
-  preFetchImages: string[];
+  preFetchImages?: string[];
 }
 
 export const PrefetchLink: React.FC<PrefetchLinkProps> = ({
