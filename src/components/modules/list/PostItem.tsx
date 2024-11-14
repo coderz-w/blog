@@ -14,6 +14,7 @@ export const PostItem = memo<{ data: PostItemType }>(function PostItem({ data })
   return (
     <PrefetchLink
       href={postLink}
+      preFetchImages={data.imageUrls}
       className="relative flex flex-col py-8 focus-visible:!shadow-none gap-2"
     >
       <PostItemHoverOverlay />

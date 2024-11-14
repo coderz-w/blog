@@ -1,12 +1,12 @@
 'use client';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 
 import { cn } from '@/lib/helper';
-import type { PostItem as PostItemType } from '@/core';
 import dayjs from '@/lib/dayjs';
+import type { PostItem as PostItemType } from '@/core';
+import { PrefetchLink } from '@/components/modules/shared/PrefetchLink';
 
 export const Card = React.memo(
   ({
@@ -20,14 +20,12 @@ export const Card = React.memo(
     hovered: number | null;
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
   }) => {
-    const router = useRouter();
     const postLink = `/notes/${card.path}`;
 
     return (
-      <div
-        onClick={useCallback(() => {
-          router.push(postLink);
-        }, [])}
+      <PrefetchLink
+        href={postLink}
+        preFetchImages={card.imageUrls}
         className={cn(
           'rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-96 w-full transition-all duration-300 ease-out cursor-pointer',
           hovered !== null && hovered !== index && 'blur-sm scale-[0.98]',
@@ -70,7 +68,7 @@ export const Card = React.memo(
             </div>
           </div>
         </div>
-      </div>
+      </PrefetchLink>
     );
   },
 );

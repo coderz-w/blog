@@ -13,14 +13,14 @@ const Footer = () => {
         <div className="relative mx-auto max-w-7xl lg:px-8 h-full flex flex-row items-center justify-around">
           <div className=" flex items-center gap-x-4 font-mono">
             <span className="">
-              <PrefetchLink href={'/'}>
+              <PrefetchLink href={'/about'}>
                 <span className=" relative before:content-[''] before:absolute before:bottom-[-2px] before:w-[0px] hover:before:w-[100%] before:h-[1px] before:bg-[var(--accent-color)] before:transition-all before:duration-300">
                   关于我
                 </span>
               </PrefetchLink>
             </span>
             <span className="">
-              <Link href={'/'}>
+              <Link href={'https://github.com/coderz-w/blog'}>
                 <span className=" relative before:content-[''] before:absolute before:bottom-[-2px] before:w-[0px] hover:before:w-[100%] before:h-[1px] before:bg-[var(--accent-color)] before:transition-all before:duration-300">
                   此项目
                 </span>

@@ -19,6 +19,7 @@ export type PostItem = {
   modified: boolean;
   coverImage: string;
   summary?: string;
+  imageUrls: string[];
 };
 
 export type PostJsonType = {
@@ -31,6 +32,8 @@ export type PostJsonType = {
 };
 
 export type PostMap = Record<string, PostItem>;
+
+const imgRegex = /!\[.*?\]\((http[s]?:\/\/[^\s\)]+\.(?:jpg|jpeg|png|gif|bmp|svg|webp|tiff|ico))\)/g;
 
 export function importMarkdownFile(path: string) {
   const markdownContext = (require as any).context('../../markdown', true, /\.md$/);
@@ -64,6 +67,12 @@ export function buildPostData() {
     const file = importMarkdownFile(`./${path}`);
     const createdAt = getFirstGitCommitTime(join('markdown/', path));
     const updatedAt = getLastGitUpdateTime(join('markdown/', path));
+    let match;
+    const imageUrls = [];
+
+    while ((match = imgRegex.exec(file)) !== null) {
+      imageUrls.push(match[1]);
+    }
 
     const postItem: PostItem = {
       authors,
@@ -76,6 +85,7 @@ export function buildPostData() {
       text: file,
       count: symbolsCount(file),
       readingTime: symbolsTime(file, 0, 200),
+      imageUrls: imageUrls,
       createdAt,
       updatedAt,
       modified: updatedAt && createdAt ? updatedAt.getTime() !== createdAt.getTime() : false,
