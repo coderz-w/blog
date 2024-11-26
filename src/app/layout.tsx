@@ -71,6 +71,8 @@ export default async function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="zh-CN" className=" noise" suppressHydrationWarning>
       <head>
+        {/* react scan */}
+        {/* <script src="https://unpkg.com/react-scan/dist/auto.global.js" async></script> */}
         <SayHi />
         <AccentColorStyleInjector />
       </head>
