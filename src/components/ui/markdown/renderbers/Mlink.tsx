@@ -19,8 +19,7 @@ export const MLink: FC<{
       const toUrlParser = new URL(href);
 
       e.preventDefault();
-
-      window.open(toUrlParser.pathname);
+      window.open(toUrlParser);
     },
     [href, router],
   );
