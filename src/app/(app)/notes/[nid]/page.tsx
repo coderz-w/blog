@@ -15,6 +15,7 @@ import { type PostItem as PostItemType, getPostData } from '@/core';
 import { LayoutRightSidePortal } from '@/providers/shared/LayoutRightSideProvider';
 import { ArticleRightAside } from '@/components/modules/shared/ArticleRightAside';
 import { Signature } from '@/components/modules/shared/signature';
+import Gisus from '@/components/modules/comment/Giscus';
 
 const { postDataMap } = await getPostData();
 
@@ -64,6 +65,7 @@ export default async function Page({ params }: { params: Record<string, any> }) 
       <PaperLayout>
         <PageInner postData={postData} />
       </PaperLayout>
+      <Gisus />
     </PageTransition>
   );
 }
