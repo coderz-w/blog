@@ -78,7 +78,7 @@ export function FocusCards({ postCards }: { postCards: PostItemType[] }) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 max-w-[7xl] mx-auto md:px-8 w-full">
-      {postCards.map((card, index) => (
+      {postCards.slice(0.6).map((card, index) => (
         <Card
           key={card.title}
           card={card}

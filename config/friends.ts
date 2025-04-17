@@ -9,7 +9,7 @@ export const friendsList: FriendModel[] = [
     name: 'CeazzZY',
     url: 'https://ceazzzy.github.io/',
     avatar: 'https://avatars.githubusercontent.com/u/60310690?v=4',
-    desc: '字节架构师',
+    desc: '',
   },
   {
     name: 'sunsunmonkey',
