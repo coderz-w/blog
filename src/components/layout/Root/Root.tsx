@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from 'react';
-import { Analytics } from '@vercel/analytics/react';
+// import { Analytics } from '@vercel/analytics/react';
 
 import Content from '../Content';
 import Footer from '../Footer';
@@ -11,7 +11,7 @@ const Root = ({ children }: PropsWithChildren) => {
       <Header />
       <Content>{children}</Content>
       <Footer />
-      <Analytics />,
+      {/* <Analytics />, */}
     </>
   );
 };

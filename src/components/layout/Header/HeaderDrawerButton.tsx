@@ -3,10 +3,11 @@
 import { HeaderActionButton } from './HeaderActionButton';
 import { HeaderDrawerContent } from './HeaderDrawerContent';
 
+import { IHeaderMenu } from '~/router';
 import { PresentSheet } from '@/components/ui/sheet';
 import useIsClient from '@/hooks/common/use-is-client';
 
-export const HeaderDrawerButton = () => {
+export const HeaderDrawerButton = ({ headerMenu }: { headerMenu: IHeaderMenu[] }) => {
   const isClient = useIsClient();
   const ButtonElement = (
     <HeaderActionButton aria-label="header draw button">
@@ -15,5 +16,9 @@ export const HeaderDrawerButton = () => {
   );
   if (!isClient) return ButtonElement;
 
-  return <PresentSheet content={<HeaderDrawerContent />}>{ButtonElement}</PresentSheet>;
+  return (
+    <PresentSheet content={<HeaderDrawerContent headerMenu={headerMenu} />}>
+      {ButtonElement}
+    </PresentSheet>
+  );
 };

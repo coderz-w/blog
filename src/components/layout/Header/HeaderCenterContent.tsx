@@ -7,17 +7,17 @@ import { usePathname, useParams } from 'next/navigation';
 import { MenuPopover } from './MenuPopover';
 
 import { cn } from '@/lib/helper';
-import { IHeaderMenu, headerMenuConfig } from '~/router';
+import { IHeaderMenu } from '~/router';
 import { PrefetchLink } from '@/components/modules/shared/PrefetchLink';
 
-export const HeaderCenterContent = () => {
+export const HeaderCenterContent = ({ headerMenu }: { headerMenu: IHeaderMenu[] }) => {
   const params = useParams();
   if (params.nid) return null;
 
   return (
     <LayoutGroup>
       <AnimatedMenu>
-        <DesktopNav />
+        <DesktopNav headerMenu={headerMenu} />
       </AnimatedMenu>
     </LayoutGroup>
   );
@@ -38,7 +38,7 @@ const AnimatedMenu = ({ children }: { children: React.ReactElement }) => {
   );
 };
 
-const DesktopNav = () => {
+const DesktopNav = ({ headerMenu }: { headerMenu: IHeaderMenu[] }) => {
   const pathname = usePathname();
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -76,7 +76,7 @@ const DesktopNav = () => {
         aria-hidden="true"
       />
       <div className="flex px-4 font-medium text-zinc-800 dark:text-zinc-200">
-        {headerMenuConfig.map((section) => {
+        {headerMenu.map((section) => {
           const subItemActive =
             section.subMenu?.findIndex((item) => {
               return item.path === pathname || pathname.slice(1) === item.path;

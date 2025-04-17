@@ -9,41 +9,67 @@ import {
   MdiFlask,
   RMixPlanet,
 } from '@/components/icons/menu-collection';
+import { HomeLocaleValues } from '@/locale';
 
-const windsock = [
-  {
-    title: '文稿',
-    type: 'Note',
-    path: '/list',
-    icon: FaSolidFeatherAlt,
-  },
-  {
-    title: '朋友们',
-    icon: FaSolidUserFriends,
-    path: '/friends',
-  },
-  {
-    title: '看看我做些啥',
-    icon: MdiFlask,
-    path: '/projects',
-  },
-  {
-    title: '跃迁',
-    icon: RMixPlanet,
-    path: 'https://travel.moe/go.html',
-  },
-];
+const windsock = {
+  zh: [
+    {
+      title: '文稿',
+      type: 'Note',
+      path: '/list',
+      icon: FaSolidFeatherAlt,
+    },
+    {
+      title: '朋友们',
+      icon: FaSolidUserFriends,
+      path: '/friends',
+    },
+    {
+      title: '看看我做些啥',
+      icon: MdiFlask,
+      path: '/projects',
+    },
+    {
+      title: '跃迁',
+      icon: RMixPlanet,
+      path: 'https://travel.moe/go.html',
+    },
+  ],
+  en: [
+    {
+      title: 'Writing',
+      type: 'Note',
+      path: '/list',
+      icon: FaSolidFeatherAlt,
+    },
+    {
+      title: 'Friends',
+      icon: FaSolidUserFriends,
+      path: '/friends',
+    },
+    {
+      title: 'Check Out My Projects',
+      icon: MdiFlask,
+      path: '/projects',
+    },
+    {
+      title: 'Jump',
+      icon: RMixPlanet,
+      path: 'https://travel.moe/go.html',
+    },
+  ],
+};
 
-export const WindVane = () => {
+export const WindVane = ({ homeLocale }: { homeLocale: HomeLocaleValues }) => {
   return (
     <div className=" w-full mt-14 md:mt-20 flex flex-col gap-y-8 px-4">
       <span className="text-2xl flex justify-center items-center gap-x-2 text-center font-medium leading-loose font-mono ">
-        风向标
+        {homeLocale.windVane}
         <span className=" i-mingcute-navigation-line cursor-pointer hover:rotate-[360deg] animate-ease-out duration-200" />
       </span>
       <div className=" center flex">
         <ul className=" flex flex-col flex-wrap gap-2 gap-y-10 opacity-80 lg:flex-row">
-          {windsock.map((item, index) => {
+          {windsock[homeLocale.lang as 'zh'].map((item, index) => {
             return (
               <m.li
                 initial={{ opacity: 0.0001, y: 15 }}
@@ -84,7 +110,7 @@ export const WindVane = () => {
                   <span className=" group-hover:text-[var(--accent-color)]">{item.title}</span>
                 </a>
 
-                {index != windsock.length - 1 && (
+                {index != windsock[homeLocale.lang as 'zh'].length - 1 && (
                   <span className="mx-4 hidden select-none lg:inline"> · </span>
                 )}
               </m.li>

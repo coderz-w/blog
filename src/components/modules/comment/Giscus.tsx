@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Giscus from '@giscus/react';
 import { useTheme } from 'next-themes';
 
-export default function GS() {
+export default function GS({ lang }: { lang: 'zh' | 'en' }) {
   const { theme, systemTheme } = useTheme();
   const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
 
@@ -33,7 +33,7 @@ export default function GS() {
         emitMetadata="0"
         inputPosition="bottom"
         theme={resolvedTheme}
-        lang="en"
+        lang={lang === 'en' ? lang : 'zh-CN'}
         loading="lazy"
       />
     </div>

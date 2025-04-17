@@ -7,6 +7,7 @@ import {
   FaSolidUserFriends,
   MdiFlask,
 } from '@/components/icons/menu-collection';
+import { getUserLocale } from '@/lib/getLocale';
 
 export interface IHeaderMenu {
   title: string;
@@ -16,7 +17,7 @@ export interface IHeaderMenu {
   subMenu?: IHeaderMenu[];
 }
 
-export const headerMenuConfig: IHeaderMenu[] = [
+const zhMenu: IHeaderMenu[] = [
   {
     title: '首页',
     path: '/',
@@ -32,13 +33,13 @@ export const headerMenuConfig: IHeaderMenu[] = [
   },
   {
     title: '友链',
-    icon: React.createElement(FaSolidUserFriends),
     path: '/friends',
+    icon: React.createElement(FaSolidUserFriends),
   },
   {
     title: '项目',
-    icon: React.createElement(MdiFlask),
     path: '/projects',
+    icon: React.createElement(MdiFlask),
   },
   {
     title: '自述',
@@ -46,3 +47,40 @@ export const headerMenuConfig: IHeaderMenu[] = [
     icon: React.createElement(FaSolidComments),
   },
 ];
+
+const enMenu: IHeaderMenu[] = [
+  {
+    title: 'Home',
+    path: '/',
+    type: 'Home',
+    icon: React.createElement(FaSolidDotCircle),
+    subMenu: [],
+  },
+  {
+    title: 'Notes',
+    type: 'Note',
+    path: '/list',
+    icon: React.createElement(FaSolidFeatherAlt),
+  },
+  {
+    title: 'Friends',
+    path: '/friends',
+    icon: React.createElement(FaSolidUserFriends),
+  },
+  {
+    title: 'Projects',
+    path: '/projects',
+    icon: React.createElement(MdiFlask),
+  },
+  {
+    title: 'About',
+    path: '/about',
+    icon: React.createElement(FaSolidComments),
+  },
+];
+
+export function headerMenuConfig(): IHeaderMenu[] {
+  const locale = getUserLocale();
+
+  return locale === 'en' ? enMenu : zhMenu;
+}

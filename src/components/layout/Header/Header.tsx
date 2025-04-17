@@ -9,12 +9,15 @@ import styles from './header.module.css';
 import { HeaderMeta } from './HeaderMeta';
 import { HeaderDrawerButton } from './HeaderDrawerButton';
 
+import { headerMenuConfig } from '~/router';
 import { cn } from '@/lib/helper';
 import { getPostData } from '@/core';
 
 const { postDataMap } = await getPostData();
 
-const Header = () => {
+const Header = async () => {
+  const headerMenu = await headerMenuConfig();
+
   return (
     <HeaderWithShadow>
       <BlurredBackground />
@@ -25,7 +28,7 @@ const Header = () => {
         )}
       >
         <HeaderLeftButtonArea>
-          <HeaderDrawerButton />
+          <HeaderDrawerButton headerMenu={headerMenu} />
         </HeaderLeftButtonArea>
 
         <HeaderLogoArea>
@@ -37,7 +40,7 @@ const Header = () => {
         </HeaderLogoArea>
         <div className=" sr-only"></div>
         <HeaderCenterArea>
-          <HeaderCenterContent />
+          <HeaderCenterContent headerMenu={headerMenu} />
           <HeaderMeta postDataMap={postDataMap} />
         </HeaderCenterArea>
 

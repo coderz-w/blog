@@ -5,12 +5,12 @@ import Link from 'next/link';
 import { memo } from 'react';
 
 import { useSheetContext } from '@/components/ui/sheet/context';
-import { headerMenuConfig } from '~/router';
+import { IHeaderMenu } from '~/router';
 
-export const HeaderDrawerContent = () => {
+export const HeaderDrawerContent = ({ headerMenu }: { headerMenu: IHeaderMenu[] }) => {
   return (
     <div className="scrollbar-none mt-12 max-h-[80dvh] w-[90vw] space-y-4 overflow-auto pb-24">
-      {headerMenuConfig.map((section, index) => {
+      {headerMenu.map((section, index) => {
         const href = section.path;
 
         return (

@@ -16,6 +16,7 @@ import { LayoutRightSidePortal } from '@/providers/shared/LayoutRightSideProvide
 import { ArticleRightAside } from '@/components/modules/shared/ArticleRightAside';
 import { Signature } from '@/components/modules/shared/signature';
 import Gisus from '@/components/modules/comment/Giscus';
+import { getUserLocale } from '@/lib/getLocale';
 
 const { postDataMap } = await getPostData();
 
@@ -59,13 +60,14 @@ export const generateMetadata = async ({ params }: { params: any }): Promise<Met
 export default async function Page({ params }: { params: Record<string, any> }) {
   const { nid } = params;
   const postData = postDataMap[nid];
+  const lang = getUserLocale();
 
   return (
     <PageTransition>
       <PaperLayout>
         <PageInner postData={postData} />
       </PaperLayout>
-      <Gisus />
+      <Gisus lang={lang} />
     </PageTransition>
   );
 }

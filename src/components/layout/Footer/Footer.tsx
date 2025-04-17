@@ -2,8 +2,13 @@ import Link from 'next/link';
 
 import { PrefetchLink } from '@/components/modules/shared/PrefetchLink';
 import ThemeSwitcher from '@/components/ui/ThemeSwitcher';
+import localeValues from '@/locale';
+import { getUserLocale } from '@/lib/getLocale';
 
 const Footer = () => {
+  const lang = getUserLocale();
+  const homeLocale = localeValues[lang].home;
+
   return (
     <footer
       data-hide-print
@@ -15,14 +20,14 @@ const Footer = () => {
             <span className="">
               <PrefetchLink href={'/about'}>
                 <span className=" relative before:content-[''] before:absolute before:bottom-[-2px] before:w-[0px] hover:before:w-[100%] before:h-[1px] before:bg-[var(--accent-color)] before:transition-all before:duration-300">
-                  关于我
+                  {homeLocale.aboutMe}
                 </span>
               </PrefetchLink>
             </span>
             <span className="">
               <Link href={'https://github.com/coderz-w/blog'}>
                 <span className=" relative before:content-[''] before:absolute before:bottom-[-2px] before:w-[0px] hover:before:w-[100%] before:h-[1px] before:bg-[var(--accent-color)] before:transition-all before:duration-300">
-                  此项目
+                  {homeLocale.thisProject}
                 </span>
               </Link>
             </span>
