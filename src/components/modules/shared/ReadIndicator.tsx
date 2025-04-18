@@ -8,7 +8,7 @@ import { cn } from '@/lib/helper';
 import { springScrollToTop } from '@/lib/scroller';
 import { useMainArticleStore } from '@/store/mainArticleStore';
 
-export const ReadIndicator = () => {
+export const ReadIndicator = ({ locale }: { locale: Record<string, string> }) => {
   const { Element } = useMainArticleStore();
   const [readPercent, setReadPercent] = useState(0);
 
@@ -40,22 +40,24 @@ export const ReadIndicator = () => {
         <MaterialSymbolsProgressActivity progress={readPercent} />
         {readPercent}%<br />
       </div>
-      <BackToTop readPercent={useDeferredValue(readPercent)} />
+      <BackToTop locale={locale} readPercent={useDeferredValue(readPercent)} />
     </div>
   );
 };
 
-const BackToTop = memo(({ readPercent }: { readPercent: number }) => {
-  return (
-    <MotionButtonBase
-      onClick={springScrollToTop}
-      className={cn(
-        'mt-1 flex flex-nowrap items-center gap-2 opacity-50 transition-all duration-500 hover:opacity-100',
-        readPercent > 10 ? '' : 'pointer-events-none opacity-0',
-      )}
-    >
-      <i className="i-mingcute-arrow-up-circle-line" />
-      <span className="whitespace-nowrap">back</span>
-    </MotionButtonBase>
-  );
-});
+const BackToTop = memo(
+  ({ readPercent, locale }: { readPercent: number; locale: Record<string, string> }) => {
+    return (
+      <MotionButtonBase
+        onClick={springScrollToTop}
+        className={cn(
+          'mt-1 flex flex-nowrap items-center gap-2 opacity-50 transition-all duration-500 hover:opacity-100',
+          readPercent > 10 ? '' : 'pointer-events-none opacity-0',
+        )}
+      >
+        <i className="i-mingcute-arrow-up-circle-line" />
+        <span className="whitespace-nowrap">{locale['Back to Top']}</span>
+      </MotionButtonBase>
+    );
+  },
+);

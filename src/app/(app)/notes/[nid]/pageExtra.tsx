@@ -4,8 +4,6 @@ import React, { PropsWithChildren, useEffect, useRef } from 'react';
 import { m } from 'framer-motion';
 import { useShallow } from 'zustand/react/shallow';
 
-import dayjs from '@/lib/dayjs';
-import { MdiClockOutline } from '@/components/icons/clock';
 import { cn } from '@/lib/helper';
 import { MainMarkdown } from '@/components/ui/markdown';
 import { useMainArticleStore } from '@/store/mainArticleStore';
@@ -19,26 +17,6 @@ export const NoteTitle = ({ title }: { title: string }) => {
         {title}
       </h1>
     </div>
-  );
-};
-
-export const NoteDateMeta = ({
-  createdAt,
-  updatedAt,
-  modified,
-}: {
-  createdAt: Date;
-  updatedAt: Date;
-  modified: boolean;
-}) => {
-  return (
-    <span className="inline-flex items-center space-x-1">
-      <MdiClockOutline />
-      <time className=" font-semibold text-sm font-mono">
-        {createdAt && dayjs(createdAt).format('YYYY 年 M 月 D 日')}
-        {modified && <>&nbsp;&nbsp;编辑于 {dayjs(updatedAt).format('YYYY 年 M 月 D 日')}</>}
-      </time>
-    </span>
   );
 };
 

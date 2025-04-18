@@ -22,6 +22,14 @@ const localeValues = {
     projects: {
       projects: '项目',
     },
+    notes: {
+      'Updated on': '编辑于',
+      'Back to Top': '回到顶部',
+    },
+    list: {
+      Edited: '已编辑',
+      lang: 'zh',
+    },
   },
   en: {
     lang: 'en',
@@ -45,6 +53,14 @@ const localeValues = {
     },
     projects: {
       projects: 'projects',
+    },
+    notes: {
+      'Updated on': 'Updated on',
+      'Back to Top': 'Back to Top',
+    },
+    list: {
+      Edited: 'Edited',
+      lang: 'en',
     },
   },
 };

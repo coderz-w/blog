@@ -4,19 +4,21 @@ import { Metadata } from 'next';
 
 import {
   NoteTitle,
-  NoteDateMeta,
   IndentArticleContainer,
   NoteMarkdown,
   PaperLayout,
   PageTransition,
 } from './pageExtra';
 
+import dayjs from '@/lib/dayjs';
+import { MdiClockOutline } from '@/components/icons/clock';
 import { type PostItem as PostItemType, getPostData } from '@/core';
 import { LayoutRightSidePortal } from '@/providers/shared/LayoutRightSideProvider';
 import { ArticleRightAside } from '@/components/modules/shared/ArticleRightAside';
 import { Signature } from '@/components/modules/shared/signature';
 import Gisus from '@/components/modules/comment/Giscus';
 import { getUserLocale } from '@/lib/getLocale';
+import localeValues from '@/locale';
 
 const { postDataMap } = await getPostData();
 
@@ -72,26 +74,64 @@ export default async function Page({ params }: { params: Record<string, any> }) 
   );
 }
 
-const PageInner = ({ postData }: PageInnerProps) => (
-  <>
-    <div>
-      <NoteTitle title={postData.title} />
-      <span className="flex flex-wrap items-center text-sm text-neutral-content/60">
-        <NoteDateMeta
-          createdAt={postData.createdAt!}
-          updatedAt={postData.updatedAt!}
-          modified={postData.modified}
-        />
-      </span>
-    </div>
-    <IndentArticleContainer>
-      <NoteMarkdown text={postData.text} />
-      <div className="signature-animated my-2 flex w-full justify-end" data-hide-print="true">
-        <Signature />
+const PageInner = ({ postData }: PageInnerProps) => {
+  const lang = getUserLocale();
+  const notesLocale = localeValues[lang].notes;
+
+  return (
+    <>
+      <div>
+        <NoteTitle title={postData.title} />
+        <span className="flex flex-wrap items-center text-sm text-neutral-content/60">
+          <NoteDateMeta
+            createdAt={postData.createdAt!}
+            updatedAt={postData.updatedAt!}
+            modified={postData.modified}
+          />
+        </span>
       </div>
-      <LayoutRightSidePortal>
-        <ArticleRightAside></ArticleRightAside>
-      </LayoutRightSidePortal>
-    </IndentArticleContainer>
-  </>
-);
+      <IndentArticleContainer>
+        <NoteMarkdown text={postData.text} />
+        <div className="signature-animated my-2 flex w-full justify-end" data-hide-print="true">
+          <Signature />
+        </div>
+        <LayoutRightSidePortal>
+          <ArticleRightAside locale={notesLocale} />
+        </LayoutRightSidePortal>
+      </IndentArticleContainer>
+    </>
+  );
+};
+
+const NoteDateMeta = ({
+  createdAt,
+  updatedAt,
+  modified,
+}: {
+  createdAt: Date;
+  updatedAt: Date;
+  modified: boolean;
+}) => {
+  const lang = getUserLocale();
+  const notesLocale = localeValues[lang].notes;
+
+  const isZh = lang === 'zh';
+  const formatDate = (date: Date) =>
+    isZh
+      ? dayjs(date).format('YYYY 年 M 月 D 日')
+      : dayjs(date).locale('en').format('MMMM D, YYYY');
+
+  return (
+    <span className="inline-flex items-center space-x-1">
+      <MdiClockOutline />
+      <time className="font-semibold text-sm font-mono">
+        {formatDate(createdAt)}
+        {modified && (
+          <>
+            &nbsp;&nbsp;{notesLocale['Updated on']} {formatDate(updatedAt)}
+          </>
+        )}
+      </time>
+    </span>
+  );
+};

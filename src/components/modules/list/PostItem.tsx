@@ -8,7 +8,10 @@ import { MdiClockOutline } from '@/components/icons/clock';
 import { FeHash } from '@/components/icons/fa-hash';
 import type { PostItem as PostItemType } from '@/core';
 
-export const PostItem = memo<{ data: PostItemType }>(function PostItem({ data }) {
+export const PostItem = memo<{ data: PostItemType; locale: any }>(function PostItem({
+  data,
+  locale,
+}) {
   const postLink = `/notes/${data.path}`;
 
   return (
@@ -24,7 +27,7 @@ export const PostItem = memo<{ data: PostItemType }>(function PostItem({ data })
         <span className=" flex min-w-0 items-center space-x-1 text-sm">
           <MdiClockOutline />
           {data.createdAt ? dayjs(data.createdAt).format('YYYY 年 M 月 D 日') : '1999 年 9 月 9 日'}
-          {data.modified && <>&nbsp;&nbsp;(已编辑)</>}
+          {data.modified && <>&nbsp;&nbsp;{locale.Edited}</>}
         </span>
         <span className="flex min-w-0 items-center space-x-1 text-sm">
           <FeHash className="translate-y-[0.5px]" />

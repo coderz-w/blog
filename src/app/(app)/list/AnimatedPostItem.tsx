@@ -10,9 +10,10 @@ import type { PostItem as PostItemType } from '@/core';
 interface AnimatedPostItemProps {
   item: PostItemType;
   index: number;
+  locale: Record<string, string>;
 }
 
-const AnimatedPostItem: React.FC<AnimatedPostItemProps> = ({ item, index }) => {
+const AnimatedPostItem: React.FC<AnimatedPostItemProps> = ({ item, index, locale }) => {
   return (
     <m.li
       initial={{ y: 50, opacity: 0.01 }}
@@ -28,7 +29,7 @@ const AnimatedPostItem: React.FC<AnimatedPostItemProps> = ({ item, index }) => {
       }}
       key={item.path}
     >
-      <PostItem data={item} />
+      <PostItem locale={locale} data={item} />
     </m.li>
   );
 };
