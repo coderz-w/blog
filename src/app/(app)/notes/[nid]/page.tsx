@@ -15,10 +15,10 @@ import { MdiClockOutline } from '@/components/icons/clock';
 import { type PostItem as PostItemType, getPostData } from '@/core';
 import { LayoutRightSidePortal } from '@/providers/shared/LayoutRightSideProvider';
 import { ArticleRightAside } from '@/components/modules/shared/ArticleRightAside';
-import { Signature } from '@/components/modules/shared/signature';
 import Gisus from '@/components/modules/comment/Giscus';
 import { getUserLocale } from '@/lib/getLocale';
 import localeValues from '@/locale';
+import { Signature } from '~/signature';
 
 const { postDataMap } = await getPostData();
 

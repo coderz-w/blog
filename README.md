@@ -9,10 +9,11 @@
 
 ### :sparkles: 特色功能
 
-- ⚡ **快速**：通过 Next.js 的 SSR 和 RSC 优化首屏加载时间，部分内链实现跳转路由预加载，提升用户体验。
-- 🌱 **简洁易用**：纯前端架构，搭建简单，支持在 Vercel 上一键部署。用户可通过修改配置文件轻松自定义元数据、主题色等内容。
-- 🔮 **UI**：响应式布局，完美适配移动端与 PC 端，基于 Framer Motion 实现流畅的弹性动画，增强用户互动体验。
-- 🔮 **SEO**：完善的MetaData,支持open graph,支持RSS订阅。
+- ⚡ **快速**：利用 Next.js 的 SSR 与 RSC 技术优化首屏加载性能，配合内链路由预加载，显著提升用户交互流畅度。
+- 🛠️ **简洁易用**：纯前端架构，部署便捷，支持一键部署至 Vercel。通过简单修改配置文件，自定义元数据、主题配色等内容，轻松打造个性化博客。
+- 💎 **UI**：响应式布局，完美适配移动端与 PC 端，基于 Framer Motion 实现流畅的弹性动画，增强用户互动体验。
+- 📈 **SEO**：提供完善的 MetaData，兼容 Open Graph 协议与 RSS 订阅。
+- 🌍 **国际化支持**：所有静态内容均兼容中英文，基于用户浏览器语言自动切换。
 
 ### 📄 使用
 
@@ -24,6 +25,7 @@
   - `introduction.ts`：配置个人介绍。
   - `projects.ts`：配置项目列表。
   - `seo.ts`：配置 SEO 优化项（如网页的 title、description 等 MetaData）。
+  - `signature.tsx`：用户个性签名,建议使用figma输入文字选择字体然后导出为svg 。
 - 文章存放在 `markdown` 文件夹下，同时需要修改 `markdown/index.json` 文件，添加文章的元数据。
 - 文章的封面图片需放在 `public/postCoverImage` 目录下。
 
