@@ -19,6 +19,7 @@ import Gisus from '@/components/modules/comment/Giscus';
 import { getUserLocale } from '@/lib/getLocale';
 import localeValues from '@/locale';
 import { Signature } from '~/signature';
+import { seo } from '~/seo';
 
 const { postDataMap } = await getPostData();
 
@@ -86,9 +87,11 @@ export default async function Page({ params }: { params: Record<string, any> }) 
               '@type': 'Person',
               name,
             })),
+            image: postData.coverImage,
+            url: `${seo.url}notes/${nid}`,
             mainEntityOfPage: {
               '@type': 'WebPage',
-              '@id': `https://your-domain.com/notes/${nid}`,
+              '@id': `${seo.url}notes/${nid}`,
             },
           }),
         }}
