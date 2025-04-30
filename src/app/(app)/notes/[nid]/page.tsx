@@ -65,12 +65,35 @@ export default async function Page({ params }: { params: Record<string, any> }) 
   const lang = getUserLocale();
 
   return (
-    <PageTransition>
-      <PaperLayout>
-        <PageInner postData={postData} />
-      </PaperLayout>
-      <Gisus lang={lang} />
-    </PageTransition>
+    <>
+      <PageTransition>
+        <PaperLayout>
+          <PageInner postData={postData} />
+        </PaperLayout>
+        <Gisus lang={lang} />
+      </PageTransition>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            headline: postData.title,
+            description: postData.summary,
+            datePublished: postData.createdAt,
+            dateModified: postData.updatedAt,
+            author: postData.authors?.map((name) => ({
+              '@type': 'Person',
+              name,
+            })),
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': `https://your-domain.com/notes/${nid}`,
+            },
+          }),
+        }}
+      />
+    </>
   );
 }
 
