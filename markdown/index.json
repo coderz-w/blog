@@ -5,5 +5,12 @@
     "title": "建站",
     "tag": "生活",
     "coverImage": "https://upload-bbs.miyoushe.com/upload/2024/07/27/75276539/98580c852764d70e5a9597aa7678f131_2245446554692880272.jpg"
+  },
+  {
+    "authors": ["zhw"],
+    "path": "react-scan.md",
+    "title": "聊聊react-scan",
+    "tag": "react",
+    "coverImage": "https://raw.githubusercontent.com/aidenybai/react-scan/ca7746e2808408c04bcfbfc15486368e67d72bba/.github/assets/logo.svg"
   }
 ]
